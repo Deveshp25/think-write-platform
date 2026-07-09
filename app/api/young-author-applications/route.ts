@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { sendLeadNotification } from "@/lib/email/notifications";
 import { createSupabaseRouteClient } from "@/lib/supabase/server";
 import {
   asString,
@@ -69,6 +70,20 @@ export async function POST(request: Request) {
         { status: 500 },
       );
     }
+
+    await sendLeadNotification({
+      formName: "Young Author application",
+      subject: "New Young Author application",
+      fields: {
+        "Student Name": studentName,
+        "Student Age": studentAge,
+        "Parent Name": parentName,
+        "Parent Email": parentEmail,
+        "Parent Phone": parentPhone,
+        "Book Idea": bookIdea,
+        Message: message,
+      },
+    });
   } catch {
     return NextResponse.json(
       { ok: false, message: "Could not submit young author application.", errors: {} },

@@ -1,30 +1,19 @@
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Mail, Sparkles } from "lucide-react";
+import { BrandLogo } from "@/components/marketing/brand-logo";
+import { brand, navigation } from "@/lib/content/site";
 import { cn } from "@/lib/utils";
-
-const navigation = [
-  { label: "Services", href: "/services" },
-  { label: "Packages", href: "/packages" },
-  { label: "Young Authors", href: "/young-authors" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
-];
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-navy/92 backdrop-blur-2xl">
-      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:h-[72px] lg:px-8">
-        <Link href="/" className="flex items-center gap-3 text-white">
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-gold/40 bg-gold/12 font-editorial text-xl text-gold">
-            T
-          </span>
-          <span className="text-sm font-semibold sm:text-base">Think & Write</span>
-        </Link>
+    <header className="sticky top-0 z-50 border-b border-gold/15 bg-black/90 backdrop-blur-2xl">
+      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-5 px-4 sm:px-6 lg:px-8">
+        <BrandLogo imageClassName="w-24 sm:w-28" priority />
 
-        <div className="hidden items-center gap-7 text-sm font-medium text-white/70 md:flex">
+        <div className="hidden items-center gap-5 text-sm font-medium text-cream/70 lg:flex">
           {navigation.map((item) => (
-            <Link key={item.href} className="transition-colors hover:text-white" href={item.href}>
+            <Link key={item.href} className="transition-colors hover:text-gold" href={item.href}>
               {item.label}
             </Link>
           ))}
@@ -32,9 +21,9 @@ export function SiteHeader() {
 
         <Link
           href="/contact"
-          className="inline-flex min-h-10 items-center justify-center rounded-lg bg-white px-4 py-2 text-sm font-semibold text-navy shadow-[0_10px_30px_rgba(255,255,255,0.12)] transition-colors hover:bg-ivory"
+          className="inline-flex min-h-9 shrink-0 items-center justify-center rounded-lg border border-gold/40 bg-gold px-4 py-2 text-xs font-semibold text-black shadow-gold transition hover:bg-gold-light sm:text-sm"
         >
-          Book Free Consultation
+          Book Consultation
         </Link>
       </nav>
     </header>
@@ -43,15 +32,22 @@ export function SiteHeader() {
 
 export function SiteFooter() {
   return (
-    <footer className="bg-navy px-4 py-12 text-white sm:px-6 lg:px-8">
-      <div className="mx-auto flex max-w-7xl flex-col gap-8 border-t border-white/10 pt-8 md:flex-row md:items-center md:justify-between">
+    <footer className="bg-black px-4 py-14 text-cream sm:px-6 lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-10 border-t border-gold/15 pt-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
         <div>
-          <p className="font-semibold">Think & Write Media & Publishing Pvt. Ltd.</p>
-          <p className="mt-2 text-sm text-white/56">Turning Ideas into Published Legacies</p>
+          <BrandLogo imageClassName="w-56" />
+          <p className="mt-4 max-w-md text-sm leading-6 text-cream/58">{brand.tagline}</p>
+          <a
+            href={`mailto:${brand.email}`}
+            className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-gold hover:text-gold-light"
+          >
+            <Mail className="h-4 w-4" />
+            {brand.email}
+          </a>
         </div>
-        <div className="flex flex-wrap gap-5 text-sm text-white/64">
+        <div className="flex flex-wrap gap-x-6 gap-y-3 text-sm text-cream/64 lg:justify-end">
           {navigation.map((item) => (
-            <Link key={item.href} href={item.href} className="hover:text-white">
+            <Link key={item.href} href={item.href} className="hover:text-gold">
               {item.label}
             </Link>
           ))}
@@ -63,7 +59,7 @@ export function SiteFooter() {
 
 export function PageShell({ children }: { children: React.ReactNode }) {
   return (
-    <main className="min-h-screen bg-white text-navy">
+    <main className="min-h-screen bg-black text-cream">
       <SiteHeader />
       {children}
       <SiteFooter />
@@ -73,7 +69,7 @@ export function PageShell({ children }: { children: React.ReactNode }) {
 
 export function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-4 py-2 text-sm font-medium text-gold">
+    <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-gold/35 bg-gold/10 px-4 py-2 text-sm font-medium text-gold">
       <Sparkles className="h-4 w-4" />
       {children}
     </div>
@@ -90,20 +86,20 @@ export function PageHero({
   description: string;
 }) {
   return (
-    <section className="relative overflow-hidden bg-navy-radial px-4 py-20 text-white sm:px-6 sm:py-28 lg:px-8">
-      <div className="absolute inset-0 opacity-[0.07] [background-image:linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] [background-size:64px_64px]" />
-      <div className="gold-glow absolute right-[-140px] top-12 hidden h-96 w-96 rounded-full blur-2xl lg:block" />
+    <section className="relative overflow-hidden bg-luxury-radial px-4 py-20 text-cream sm:px-6 sm:py-28 lg:px-8">
+      <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(to_right,#d4af37_1px,transparent_1px),linear-gradient(to_bottom,#d4af37_1px,transparent_1px)] [background-size:72px_72px]" />
+      <div className="gold-glow absolute right-[-180px] top-10 hidden h-[28rem] w-[28rem] rounded-full blur-2xl lg:block" />
       <div className="relative mx-auto max-w-5xl">
         <SectionLabel>{eyebrow}</SectionLabel>
-        <h1 className="max-w-4xl font-editorial text-5xl leading-[1.02] sm:text-6xl lg:text-7xl">
+        <h1 className="max-w-4xl font-editorial text-5xl leading-[1.02] text-cream sm:text-6xl lg:text-7xl">
           {title}
         </h1>
-        <p className="mt-7 max-w-2xl text-lg leading-8 text-white/72 sm:text-xl sm:leading-9">
+        <p className="mt-7 max-w-2xl text-lg leading-8 text-cream/70 sm:text-xl sm:leading-9">
           {description}
         </p>
         <div className="mt-9 flex flex-col gap-3 sm:flex-row">
           <ButtonLink href="/contact" variant="gold">
-            Book Free Consultation
+            Book Consultation
           </ButtonLink>
           <ButtonLink href="/packages" variant="glass">
             View Packages
@@ -130,11 +126,11 @@ export function ButtonLink({
       href={href}
       className={cn(
         "group inline-flex min-h-12 items-center justify-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-gold",
-        variant === "gold" && "bg-gold text-navy shadow-gold hover:bg-[#e2c250]",
+        variant === "gold" && "bg-gold text-black shadow-gold hover:bg-gold-light",
         variant === "glass" &&
-          "border border-white/20 bg-white/10 text-white backdrop-blur hover:bg-white/16",
+          "border border-gold/25 bg-white/8 text-cream backdrop-blur hover:border-gold/45 hover:bg-white/12",
         variant === "outline" &&
-          "border border-navy/12 bg-white text-navy shadow-soft-card hover:border-gold/35",
+          "border border-gold/28 bg-black/40 text-cream shadow-luxury hover:border-gold/55",
         className,
       )}
     >
@@ -148,7 +144,7 @@ export function FeatureCard({
   icon: Icon,
   title,
   description,
-  tone = "light",
+  tone = "dark",
 }: {
   icon: LucideIcon;
   title: string;
@@ -160,34 +156,35 @@ export function FeatureCard({
       className={cn(
         "rounded-lg border p-7 transition-all hover:-translate-y-1",
         tone === "light" &&
-          "border-navy/8 bg-white shadow-soft-card hover:border-gold/35 hover:shadow-premium",
-        tone === "dark" && "glass-panel text-white",
+          "border-gold/18 bg-charcoal text-cream shadow-luxury hover:border-gold/45",
+        tone === "dark" && "border-gold/18 bg-black/48 text-cream shadow-luxury hover:border-gold/45",
       )}
     >
       <Icon className="mb-6 h-7 w-7 text-gold" />
       <h3 className="text-xl font-semibold">{title}</h3>
-      <p className={cn("mt-3 leading-7", tone === "light" ? "text-navy/64" : "text-white/68")}>
-        {description}
-      </p>
+      <p className="mt-3 leading-7 text-cream/64">{description}</p>
     </div>
   );
 }
 
 export function FinalCta({
   title = "Ready to shape your book into a legacy?",
-  description = "Start with a free consultation and leave with a clearer publishing path.",
+  description = "Start with a consultation and leave with a clearer publishing path.",
 }: {
   title?: string;
   description?: string;
 }) {
   return (
-    <section className="bg-navy-radial px-4 py-20 text-center text-white sm:px-6 sm:py-28 lg:px-8">
+    <section className="bg-luxury-radial px-4 py-20 text-center text-cream sm:px-6 sm:py-28 lg:px-8">
       <div className="mx-auto max-w-4xl">
         <h2 className="font-editorial text-4xl leading-tight sm:text-6xl">{title}</h2>
-        <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/72">{description}</p>
-        <div className="mt-9">
+        <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-cream/70">{description}</p>
+        <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <ButtonLink href="/contact" variant="gold">
-            Book Free Consultation
+            Book Consultation
+          </ButtonLink>
+          <ButtonLink href={`mailto:${brand.email}`} variant="outline">
+            Email Us
           </ButtonLink>
         </div>
       </div>

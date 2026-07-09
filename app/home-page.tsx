@@ -1,17 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import {
-  motion,
-  useMotionValue,
-  useReducedMotion,
-  useScroll,
-  useSpring,
-  useTransform,
-} from "framer-motion";
+import { motion } from "framer-motion";
 import {
   ArrowRight,
-  Award,
   BadgeCheck,
   BookOpen,
   CalendarCheck,
@@ -19,144 +11,50 @@ import {
   ChevronDown,
   Feather,
   FileText,
+  Mail,
   Megaphone,
   PenLine,
   ShieldCheck,
   Sparkles,
-  Star,
   Users,
 } from "lucide-react";
+import { AddOnServicesSection } from "@/components/marketing/add-on-services-section";
+import { BrandLogo } from "@/components/marketing/brand-logo";
+import { brand, coreServices, navigation, packages, successStory } from "@/lib/content/site";
 import { cn } from "@/lib/utils";
 
-const services = [
-  {
-    title: "Book Writing",
-    description: "Structured writing support for authors who need clarity, rhythm, and momentum.",
-    icon: PenLine,
-  },
-  {
-    title: "Ghostwriting",
-    description: "Your voice, story, and expertise shaped into a compelling manuscript.",
-    icon: Feather,
-  },
-  {
-    title: "Editing & Proofreading",
-    description: "Editorial refinement that improves flow, credibility, precision, and polish.",
-    icon: FileText,
-  },
-  {
-    title: "Cover Design",
-    description: "Premium book covers built for genre fit, shelf appeal, and digital discovery.",
-    icon: BookOpen,
-  },
-  {
-    title: "Amazon Publishing",
-    description: "End-to-end guidance for formatting, listing, publishing, and launch readiness.",
-    icon: BadgeCheck,
-  },
-  {
-    title: "Author Brand Growth",
-    description: "Instagram, PR, and positioning systems that turn authors into visible brands.",
-    icon: Megaphone,
-  },
-];
-
-const navigation = [
-  { label: "Services", href: "/services" },
-  { label: "Packages", href: "/packages" },
-  { label: "Young Authors", href: "/young-authors" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
-];
-
-const trustMetrics = [
-  { value: "10+", label: "author services" },
-  { value: "4", label: "publishing paths" },
-  { value: "1:1", label: "strategy calls" },
-  { value: "360", label: "launch support" },
-];
+const serviceIcons = [PenLine, Feather, FileText, BookOpen, BadgeCheck, Megaphone];
 
 const whyReasons = [
   {
-    title: "Strategic positioning",
-    description: "Your book direction, audience, offer, and launch angle are clarified before production begins.",
+    title: "Editorial clarity",
+    description: "Books are shaped for structure, voice, reader trust, and professional polish.",
     icon: ShieldCheck,
   },
   {
-    title: "Editorial credibility",
-    description: "Every manuscript is shaped for structure, voice, reader trust, and professional authority.",
-    icon: Award,
+    title: "Publishing readiness",
+    description: "Authors receive practical support for formatting, ISBN assistance, Amazon setup, and launch assets.",
+    icon: BookOpen,
   },
   {
-    title: "Launch thinking",
-    description: "Publishing support goes beyond upload day with brand, PR, Instagram, and visibility planning.",
+    title: "Brand visibility",
+    description: "Design, author positioning, social media creatives, and visibility campaigns work together.",
     icon: Megaphone,
   },
   {
     title: "Human guidance",
-    description: "Authors receive calm, high-touch direction from idea stage through book launch decisions.",
+    description: "The process is built around direct consultation, author mentorship, and thoughtful review.",
     icon: Users,
   },
 ];
 
-const packages = [
-  {
-    name: "Launchpad",
-    price: "Rs. 14,999",
-    label: "For first-time authors",
-    features: ["Publishing guidance", "Manuscript review", "Amazon launch support"],
-  },
-  {
-    name: "Author Pro",
-    price: "Rs. 34,999",
-    label: "Most chosen",
-    featured: true,
-    features: ["Writing support", "Editing direction", "Brand launch planning"],
-  },
-  {
-    name: "Legacy Author",
-    price: "Rs. 74,999",
-    label: "For authority builders",
-    features: ["Ghostwriting strategy", "PR positioning", "Premium launch roadmap"],
-  },
-  {
-    name: "Young Author",
-    price: "Rs. 19,999",
-    label: "For young writers",
-    features: ["Mentorship", "Parent-guided process", "Publishing confidence"],
-  },
-];
+const journey = ["Idea Discovery", "Book Strategy", "Writing", "Editing", "Design", "Publishing", "Launch"];
 
-const journey = [
-  "Idea Discovery",
-  "Book Strategy",
-  "Writing",
-  "Editing",
-  "Design",
+const heroHighlights = [
   "Publishing",
-  "Launch",
-  "Legacy",
-];
-
-const testimonials = [
-  {
-    quote:
-      "They helped me turn years of scattered ideas into a book that finally felt worthy of my name.",
-    name: "Founder Author",
-    role: "Legacy Author client",
-  },
-  {
-    quote:
-      "The process felt premium, calm, and deeply structured from the first call to launch week.",
-    name: "First-Time Author",
-    role: "Author Pro client",
-  },
-  {
-    quote:
-      "My child learned how to think like a storyteller and finished with confidence we could see.",
-    name: "Parent",
-    role: "Young Author Programme",
-  },
+  "Branding",
+  "Author Growth",
+  "Legacy Creation",
 ];
 
 const faqs = [
@@ -168,17 +66,17 @@ const faqs = [
   {
     question: "Can you help with publishing on Amazon?",
     answer:
-      "Yes. The platform supports Amazon publishing preparation, listing guidance, launch planning, and author positioning.",
+      "Yes. The platform supports Amazon Kindle and paperback publishing preparation, listing guidance, and launch readiness.",
   },
   {
     question: "Is the Young Author Programme parent-guided?",
     answer:
-      "Yes. Parent consent, communication, and review checkpoints are part of the Young Author Programme experience.",
+      "Yes. Parent communication and review checkpoints are part of the Young Author Programme experience.",
   },
   {
     question: "Which package should I choose?",
     answer:
-      "Launchpad fits early publishing support, Author Pro fits serious authors, and Legacy Author fits professionals building authority.",
+      "Launchpad fits debut authors, Author Pro fits authors seeking visibility, Legacy Author fits authority-building authors, and Young Author Programme fits writers aged 8-18.",
   },
 ];
 
@@ -189,7 +87,7 @@ const fadeUp = {
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-4 py-2 text-sm font-medium text-gold">
+    <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-gold/35 bg-gold/10 px-4 py-2 text-sm font-medium text-gold">
       <Sparkles className="h-4 w-4" />
       {children}
     </div>
@@ -211,7 +109,7 @@ function PrimaryButton({
       whileTap={{ scale: 0.98 }}
       href={href}
       className={cn(
-        "group inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-gold px-6 py-3 text-sm font-semibold text-navy shadow-gold transition-colors hover:bg-[#e2c250] focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2",
+        "group inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-gold px-6 py-3 text-sm font-semibold text-black shadow-gold transition-colors hover:bg-gold-light focus:outline-none focus:ring-2 focus:ring-gold",
         className,
       )}
     >
@@ -233,137 +131,116 @@ function SecondaryButton({
       whileHover={{ y: -2 }}
       whileTap={{ scale: 0.98 }}
       href={href}
-      className="inline-flex min-h-12 items-center justify-center rounded-lg border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/16 focus:outline-none focus:ring-2 focus:ring-white/50"
+      className="inline-flex min-h-12 items-center justify-center rounded-lg border border-gold/30 bg-white/8 px-6 py-3 text-sm font-semibold text-cream backdrop-blur transition-colors hover:border-gold/55 hover:bg-white/12 focus:outline-none focus:ring-2 focus:ring-gold/60"
     >
       {children}
     </motion.a>
   );
 }
 
-function ParticleField() {
-  const shouldReduceMotion = useReducedMotion();
-  const particles = [
-    { left: "9%", top: "18%", size: 3, delay: 0 },
-    { left: "18%", top: "74%", size: 2, delay: 0.8 },
-    { left: "36%", top: "22%", size: 2, delay: 1.4 },
-    { left: "52%", top: "78%", size: 3, delay: 0.4 },
-    { left: "69%", top: "15%", size: 2, delay: 1.1 },
-    { left: "84%", top: "62%", size: 3, delay: 0.6 },
-    { left: "92%", top: "28%", size: 2, delay: 1.7 },
-  ];
-
-  return (
-    <div className="pointer-events-none absolute inset-0 hidden overflow-hidden md:block" aria-hidden="true">
-      {particles.map((particle) => (
-        <motion.span
-          key={`${particle.left}-${particle.top}`}
-          className="absolute rounded-full bg-gold/55 shadow-[0_0_18px_rgba(212,175,55,0.42)]"
-          style={{
-            left: particle.left,
-            top: particle.top,
-            height: particle.size,
-            width: particle.size,
-          }}
-          animate={
-            shouldReduceMotion
-              ? undefined
-              : {
-                  opacity: [0.16, 0.58, 0.16],
-                  y: [0, -18, 0],
-                }
-          }
-          transition={{
-            duration: 5.8,
-            repeat: Infinity,
-            delay: particle.delay,
-            ease: "easeInOut",
-          }}
-        />
-      ))}
-    </div>
-  );
-}
-
-function HardcoverBook() {
-  const { scrollYProgress } = useScroll();
-  const shouldReduceMotion = useReducedMotion();
-  const pointerX = useMotionValue(0);
-  const pointerY = useMotionValue(0);
-  const smoothX = useSpring(pointerX, { stiffness: 110, damping: 22, mass: 0.35 });
-  const smoothY = useSpring(pointerY, { stiffness: 110, damping: 22, mass: 0.35 });
-  const rotateY = useTransform(smoothX, [-0.5, 0.5], [-12, 12]);
-  const rotateX = useTransform(smoothY, [-0.5, 0.5], [9, -9]);
-  const y = useTransform(scrollYProgress, [0, 0.6], [0, -44]);
-  const glowY = useTransform(scrollYProgress, [0, 0.6], [0, 28]);
-
-  function handleMouseMove(event: React.MouseEvent<HTMLDivElement>) {
-    const bounds = event.currentTarget.getBoundingClientRect();
-    pointerX.set((event.clientX - bounds.left) / bounds.width - 0.5);
-    pointerY.set((event.clientY - bounds.top) / bounds.height - 0.5);
-  }
-
+function PublishingHeroVisual() {
   return (
     <motion.div
-      onMouseMove={handleMouseMove}
-      onMouseLeave={() => {
-        pointerX.set(0);
-        pointerY.set(0);
-      }}
-      style={{ y }}
-      className="book-spine relative mx-auto hidden h-[560px] w-[500px] lg:block"
-      aria-hidden="true"
+      initial={{ opacity: 0, scale: 0.96 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.7 }}
+      className="group relative mx-auto h-[480px] w-full max-w-xl sm:h-[560px] lg:h-[620px] lg:max-w-none"
+      aria-label="Premium publishing visual"
     >
-      <motion.div
-        style={{ y: glowY }}
-        className="gold-glow absolute left-1/2 top-1/2 h-[460px] w-[460px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-xl"
-      />
-      <motion.div
-        className="hardcover-book absolute left-1/2 top-1/2 h-[380px] w-[292px] -translate-x-1/2 -translate-y-1/2"
-        style={{
-          rotateX: shouldReduceMotion ? 0 : rotateX,
-          rotateY: shouldReduceMotion ? 0 : rotateY,
-        }}
-        animate={shouldReduceMotion ? undefined : { y: [0, -12, 0] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <div className="book-back-face absolute inset-0 rounded-lg bg-[#07101f] shadow-[28px_34px_90px_rgba(0,0,0,0.38)]" />
-        <div className="book-pages-face absolute left-[270px] top-4 h-[352px] w-[54px] rounded-r-lg border border-white/25 bg-gradient-to-r from-[#F8F5EE] via-white to-[#D8DFEA]">
-          <div className="absolute inset-y-7 left-3 w-px bg-navy/10" />
-          <div className="absolute inset-y-10 left-6 w-px bg-navy/8" />
-          <div className="absolute inset-y-12 left-9 w-px bg-navy/8" />
-        </div>
-        <div className="book-cover-face absolute inset-0 overflow-hidden rounded-lg border border-gold/38 bg-navy shadow-[0_36px_100px_rgba(0,0,0,0.42)]">
-          <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-b from-[#f3df86] via-gold to-[#8e7426]" />
-          <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.16),transparent_38%,rgba(212,175,55,0.12))]" />
-          <div className="absolute left-20 top-16 h-px w-28 bg-gold/74" />
-          <div className="absolute left-20 top-24 h-px w-36 bg-white/24" />
-          <div className="absolute bottom-20 left-20 right-10 rounded-lg border border-gold/35 bg-white/8 p-5 backdrop-blur">
-            <p className="font-editorial text-3xl leading-tight text-white">Published Legacies</p>
-            <p className="mt-3 text-xs font-medium uppercase text-gold">Think & Write</p>
+      <div className="absolute inset-x-4 top-12 h-[24rem] rounded-full bg-gold/20 blur-3xl sm:inset-x-8 sm:top-16 sm:h-[30rem]" />
+      <div className="absolute bottom-8 left-4 right-4 h-24 rounded-full bg-black/70 blur-2xl" />
+      <div className="absolute bottom-14 left-1/2 h-12 w-[82%] -translate-x-1/2 rounded-full bg-gold/22 blur-xl" />
+
+      <div className="relative mx-auto mt-5 h-[390px] w-[280px] sm:mt-8 sm:h-[470px] sm:w-[336px] lg:mt-10 lg:h-[520px] lg:w-[372px]">
+        <motion.div
+          whileHover={{ scale: 1.015 }}
+          transition={{ type: "spring", stiffness: 180, damping: 22 }}
+          className="relative h-full w-full"
+        >
+        <div
+          className="absolute inset-0 rounded-r-xl rounded-l-md border border-gold/45 bg-gradient-to-br from-gold-light via-gold to-bronze p-3 shadow-gold transition-shadow duration-500 group-hover:shadow-[0_28px_90px_rgba(212,175,55,0.32)]"
+          style={{
+            transform: "perspective(1100px) rotateY(-18deg) rotateX(5deg)",
+            transformOrigin: "center",
+          }}
+        >
+          <div className="relative h-full overflow-hidden rounded-r-lg rounded-l-sm border border-gold/34 bg-[radial-gradient(circle_at_30%_18%,rgba(240,216,121,0.24),transparent_34%),linear-gradient(145deg,#070604_0%,#15110c_48%,#050505_100%)] p-7 shadow-luxury sm:p-9">
+            <div className="absolute inset-y-0 left-0 w-7 border-r border-gold/28 bg-gradient-to-r from-black via-bronze/36 to-transparent" />
+            <div className="absolute inset-x-8 top-8 h-px bg-gradient-to-r from-gold via-gold-light to-transparent" />
+            <div className="absolute -right-14 top-12 h-40 w-40 rounded-full bg-gold/16 blur-2xl" />
+            <div className="relative z-10 flex h-full flex-col justify-between pl-4">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-gold">
+                  Premium Publishing
+                </p>
+                <h3 className="mt-8 font-editorial text-5xl leading-[0.95] text-cream sm:text-6xl">
+                  Think
+                  <span className="block gold-gradient-text">& Write</span>
+                </h3>
+              </div>
+
+              <div>
+                <div className="mb-7 h-px w-24 bg-gold/80" />
+                <p className="max-w-[13rem] font-editorial text-2xl leading-tight text-cream sm:text-3xl">
+                  Turning Ideas into Published Legacies
+                </p>
+              </div>
+            </div>
           </div>
-          <div className="absolute bottom-8 left-20 h-px w-24 bg-gold/70" />
         </div>
-      </motion.div>
-      <div className="absolute bottom-14 left-1/2 h-12 w-80 -translate-x-1/2 rounded-full bg-black/30 blur-2xl" />
+
+        <div
+          className="absolute left-[calc(100%-42px)] top-8 h-[calc(100%-42px)] w-20 rounded-r-xl border border-l-0 border-gold/38 bg-gradient-to-r from-bronze via-charcoal to-black shadow-luxury"
+          style={{
+            transform: "perspective(1100px) rotateY(-18deg) rotateX(5deg)",
+            transformOrigin: "left",
+          }}
+        />
+        <div
+          className="absolute -bottom-5 left-10 h-12 w-[82%] rounded-full bg-black/70 blur-xl"
+          style={{
+            transform: "perspective(900px) rotateX(66deg)",
+          }}
+        />
+        </motion.div>
+      </div>
+
+      <div className="pointer-events-none absolute inset-0">
+        {heroHighlights.map((item, index) => {
+          const positions = [
+            "left-3 top-20 sm:left-5 sm:top-28",
+            "right-2 top-32 sm:right-4 sm:top-40",
+            "left-4 bottom-28 sm:left-8 sm:bottom-36",
+            "right-4 bottom-20 sm:right-8 sm:bottom-28",
+          ];
+
+          return (
+            <motion.div
+              key={item}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.45 + index * 0.08, duration: 0.45 }}
+              className={`absolute ${positions[index]} rounded-full border border-gold/28 bg-black/72 px-4 py-2 text-xs font-semibold text-gold shadow-luxury backdrop-blur-md sm:px-5 sm:text-sm`}
+            >
+              {item}
+            </motion.div>
+          );
+        })}
+      </div>
     </motion.div>
   );
 }
 
 export default function HomePage() {
   return (
-    <main className="overflow-hidden bg-white text-navy">
-      <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-navy/72 backdrop-blur-2xl">
-        <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:h-[72px] lg:px-8">
-          <Link href="/" className="flex items-center gap-3 text-white">
-            <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-gold/40 bg-gold/12 font-editorial text-xl text-gold">
-              T
-            </span>
-            <span className="text-sm font-semibold sm:text-base">Think & Write</span>
-          </Link>
+    <main className="overflow-hidden bg-black text-cream">
+      <header className="fixed left-0 right-0 top-0 z-50 border-b border-gold/15 bg-black/86 backdrop-blur-2xl">
+        <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-5 px-4 sm:px-6 lg:px-8">
+          <BrandLogo imageClassName="w-24 sm:w-28" priority />
 
-          <div className="hidden items-center gap-7 text-sm font-medium text-white/70 md:flex">
+          <div className="hidden items-center gap-5 text-sm font-medium text-cream/70 lg:flex">
             {navigation.map((item) => (
-              <Link key={item.href} className="transition-colors hover:text-white" href={item.href}>
+              <Link key={item.href} className="transition-colors hover:text-gold" href={item.href}>
                 {item.label}
               </Link>
             ))}
@@ -371,16 +248,16 @@ export default function HomePage() {
 
           <Link
             href="/contact"
-            className="inline-flex min-h-10 items-center justify-center rounded-lg bg-white px-4 py-2 text-sm font-semibold text-navy shadow-[0_10px_30px_rgba(255,255,255,0.12)] transition-colors hover:bg-ivory"
+            className="inline-flex min-h-9 shrink-0 items-center justify-center rounded-lg border border-gold/40 bg-gold px-4 py-2 text-xs font-semibold text-black shadow-gold transition-colors hover:bg-gold-light sm:text-sm"
           >
-            Book Free Consultation
+            Book Consultation
           </Link>
         </nav>
       </header>
 
-      <section className="relative min-h-screen bg-navy-radial pt-28 text-white sm:pt-32">
-        <ParticleField />
-        <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] [background-size:64px_64px]" />
+      <section className="relative min-h-screen bg-luxury-radial pt-28 text-cream sm:pt-32">
+        <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(to_right,#d4af37_1px,transparent_1px),linear-gradient(to_bottom,#d4af37_1px,transparent_1px)] [background-size:72px_72px]" />
+        <div className="gold-glow absolute right-[-220px] top-24 hidden h-[34rem] w-[34rem] rounded-full blur-2xl lg:block" />
         <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 pb-24 sm:px-6 lg:grid-cols-[1.02fr_0.98fr] lg:px-8 lg:pb-32">
           <motion.div
             initial="hidden"
@@ -393,45 +270,29 @@ export default function HomePage() {
             </motion.div>
             <motion.h1
               variants={fadeUp}
-              className="max-w-4xl font-editorial text-5xl leading-[0.98] text-white sm:text-6xl lg:text-[86px]"
+              className="max-w-4xl font-editorial text-5xl leading-[0.98] text-cream sm:text-6xl lg:text-[86px]"
             >
-              Turning Ideas into{" "}
-              <span className="gold-gradient-text">Published Legacies</span>
+              Turning Ideas into <span className="gold-gradient-text">Published Legacies</span>
             </motion.h1>
             <motion.p
               variants={fadeUp}
-              className="mt-7 max-w-2xl text-lg leading-8 text-white/74 sm:text-xl sm:leading-9"
+              className="mt-7 max-w-2xl text-lg leading-8 text-cream/72 sm:text-xl sm:leading-9"
             >
-              Your story deserves more than a document. We help authors shape
-              their ideas into beautifully written books, credible personal
-              brands, and launches that feel worthy of the life behind them.
+              {brand.name} helps authors shape manuscripts, publishing assets,
+              author branding, and launch visibility with a premium black and gold
+              publishing experience.
             </motion.p>
             <motion.div variants={fadeUp} className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <PrimaryButton href="/contact">Book Free Consultation</PrimaryButton>
+              <PrimaryButton href="/contact">Book Consultation</PrimaryButton>
               <SecondaryButton href="/packages">View Packages</SecondaryButton>
-            </motion.div>
-            <motion.div
-              variants={fadeUp}
-              className="mt-10 grid max-w-2xl grid-cols-2 gap-3 text-sm text-white/72 sm:grid-cols-4"
-            >
-              {trustMetrics.map((metric) => (
-                <div key={metric.label} className="glass-panel rounded-lg px-4 py-4">
-                  <div className="font-editorial text-3xl leading-none text-white">
-                    {metric.value}
-                  </div>
-                  <div className="mt-2 text-xs font-medium uppercase text-white/58">
-                    {metric.label}
-                  </div>
-                </div>
-              ))}
             </motion.div>
           </motion.div>
 
-          <HardcoverBook />
+          <PublishingHeroVisual />
         </div>
       </section>
 
-      <section id="why" className="bg-premium-surface py-24 sm:py-32">
+      <section className="bg-premium-surface py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial="hidden"
@@ -442,23 +303,24 @@ export default function HomePage() {
           >
             <motion.div variants={fadeUp}>
               <SectionLabel>Why Think & Write</SectionLabel>
-              <h2 className="max-w-xl font-editorial text-4xl leading-tight sm:text-5xl">
-                A publishing house experience with startup-grade execution.
+              <h2 className="max-w-xl font-editorial text-4xl leading-tight text-cream sm:text-5xl">
+                Publishing, branding, and legacy creation under one refined house.
               </h2>
-              <p className="mt-6 max-w-lg text-lg leading-8 text-navy/64">
-                Built for authors who want a refined book, a credible public
-                presence, and a process that feels considered at every step.
+              <p className="mt-6 max-w-lg text-lg leading-8 text-cream/64">
+                The company combines editorial guidance, publishing execution,
+                founder-led creative services, and launch assets for authors at
+                different stages.
               </p>
             </motion.div>
             <motion.div variants={fadeUp} className="grid gap-4 sm:grid-cols-2">
               {whyReasons.map((item) => (
                 <div
                   key={item.title}
-                  className="rounded-lg border border-navy/8 bg-white/88 p-6 shadow-soft-card backdrop-blur transition-all hover:-translate-y-1 hover:border-gold/30"
+                  className="rounded-lg border border-gold/18 bg-black/45 p-6 shadow-luxury transition-all hover:-translate-y-1 hover:border-gold/45"
                 >
                   <item.icon className="mb-5 h-6 w-6 text-gold" />
-                  <h3 className="text-lg font-semibold">{item.title}</h3>
-                  <p className="mt-3 leading-7 text-navy/64">{item.description}</p>
+                  <h3 className="text-lg font-semibold text-cream">{item.title}</h3>
+                  <p className="mt-3 leading-7 text-cream/64">{item.description}</p>
                 </div>
               ))}
             </motion.div>
@@ -466,47 +328,49 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="services" className="bg-white py-24 sm:py-32">
+      <section id="services" className="bg-black py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <SectionLabel>Services Overview</SectionLabel>
-            <h2 className="font-editorial text-4xl leading-tight sm:text-5xl">
-              Everything an author needs to move from idea to impact.
+            <h2 className="font-editorial text-4xl leading-tight text-cream sm:text-5xl">
+              Everything an author needs to move from manuscript to market.
             </h2>
           </div>
           <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service, index) => (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ delay: index * 0.05 }}
-                className="group rounded-lg border border-navy/8 bg-white p-7 shadow-soft-card transition-all hover:-translate-y-1 hover:border-gold/40 hover:shadow-premium"
-              >
-                <service.icon className="mb-6 h-7 w-7 text-gold" />
-                <h3 className="text-xl font-semibold">{service.title}</h3>
-                <p className="mt-3 leading-7 text-navy/64">{service.description}</p>
-              </motion.div>
-            ))}
+            {coreServices.map((service, index) => {
+              const Icon = serviceIcons[index] ?? BookOpen;
+              return (
+                <motion.div
+                  key={service.title}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ delay: index * 0.05 }}
+                  className="group rounded-lg border border-gold/18 bg-charcoal p-7 shadow-luxury transition-all hover:-translate-y-1 hover:border-gold/45"
+                >
+                  <Icon className="mb-6 h-7 w-7 text-gold" />
+                  <h3 className="text-xl font-semibold text-cream">{service.title}</h3>
+                  <p className="mt-3 leading-7 text-cream/64">{service.description}</p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section id="packages" className="relative bg-navy py-24 text-white sm:py-32">
+      <section id="packages" className="relative bg-obsidian py-24 text-cream sm:py-32">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/55 to-transparent" />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
             <div className="max-w-3xl">
               <SectionLabel>Publishing Packages</SectionLabel>
-              <h2 className="font-editorial text-4xl leading-tight sm:text-5xl">
-                Choose the level of support your legacy deserves.
+              <h2 className="font-editorial text-4xl leading-tight text-cream sm:text-5xl">
+                Choose the publishing path that matches your ambition.
               </h2>
             </div>
-            <p className="max-w-md leading-7 text-white/68">
-              Clear starting points for first-time authors, serious creators,
-              professionals, founders, and young writers.
-            </p>
+            <Link className="text-sm font-semibold text-gold hover:text-gold-light" href="/packages">
+              Compare full package benefits
+            </Link>
           </div>
           <div className="mt-14 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
             {packages.map((item) => (
@@ -514,29 +378,27 @@ export default function HomePage() {
                 key={item.name}
                 whileHover={{ y: -8 }}
                 className={cn(
-                  "rounded-lg border p-7",
+                  "rounded-lg border p-7 shadow-luxury",
                   item.featured
-                    ? "border-gold bg-white text-navy shadow-gold"
-                    : "glass-panel text-white",
+                    ? "border-gold bg-gold text-black"
+                    : "border-gold/18 bg-black/48 text-cream",
                 )}
               >
                 <div
                   className={cn(
                     "mb-6 inline-flex rounded-full px-3 py-1 text-xs font-semibold",
-                    item.featured ? "bg-gold/16 text-navy" : "bg-white/10 text-gold",
+                    item.featured ? "bg-black/12 text-black" : "bg-gold/10 text-gold",
                   )}
                 >
-                  {item.label}
+                  {item.featured ? "Flagship Package" : item.idealFor}
                 </div>
                 <h3 className="text-2xl font-semibold">{item.name}</h3>
                 <p className="mt-4 font-editorial text-4xl">{item.price}</p>
                 <div className="mt-7 space-y-4">
-                  {item.features.map((feature) => (
+                  {item.includes.slice(0, 4).map((feature) => (
                     <div key={feature} className="flex gap-3 text-sm leading-6">
-                      <Check className="mt-1 h-4 w-4 shrink-0 text-gold" />
-                      <span className={item.featured ? "text-navy/72" : "text-white/72"}>
-                        {feature}
-                      </span>
+                      <Check className={cn("mt-1 h-4 w-4 shrink-0", item.featured ? "text-black" : "text-gold")} />
+                      <span className={item.featured ? "text-black/72" : "text-cream/72"}>{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -546,31 +408,20 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="young-author" className="relative bg-ivory py-24 sm:py-32">
+      <section id="young-author" className="relative bg-black py-24 sm:py-32">
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-          >
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
             <SectionLabel>Young Author Programme</SectionLabel>
-            <h2 className="font-editorial text-4xl leading-tight sm:text-5xl">
-              Helping young writers turn imagination into a published book.
+            <h2 className="font-editorial text-4xl leading-tight text-cream sm:text-5xl">
+              Helping young writers turn imagination into published confidence.
             </h2>
-            <p className="mt-6 text-lg leading-8 text-navy/68">
-              A structured, parent-guided programme for students who are ready
-              to develop storytelling confidence, creative discipline, and the
-              pride of becoming a published author.
+            <p className="mt-6 text-lg leading-8 text-cream/68">
+              A parent-guided programme for writers aged 8-18, built around
+              publishing, school launch assets, author posters, and media coverage drafts.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <PrimaryButton href="/young-authors">Apply Now</PrimaryButton>
-              <Link
-                href="/contact"
-                className="inline-flex min-h-12 items-center justify-center rounded-lg border border-navy/12 bg-white px-6 py-3 text-sm font-semibold text-navy shadow-premium"
-              >
-                Book Parent Consultation
-              </Link>
+              <SecondaryButton href="/contact">Book Parent Consultation</SecondaryButton>
             </div>
           </motion.div>
 
@@ -580,24 +431,46 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="grid gap-4 sm:grid-cols-2"
           >
-            {["Idea development", "Writing mentorship", "Editing support", "Publishing guidance"].map(
-              (item) => (
-                <div key={item} className="rounded-lg border border-navy/8 bg-white p-6 shadow-soft-card transition-all hover:-translate-y-1 hover:border-gold/30">
-                  <BookOpen className="mb-4 h-6 w-6 text-gold" />
-                  <p className="font-semibold">{item}</p>
-                </div>
-              ),
-            )}
+            {["Publishing", "Author Certificate", "School Launch Toolkit", "Media Coverage Draft"].map((item) => (
+              <div key={item} className="rounded-lg border border-gold/18 bg-charcoal p-6 shadow-luxury transition-all hover:-translate-y-1 hover:border-gold/45">
+                <BookOpen className="mb-4 h-6 w-6 text-gold" />
+                <p className="font-semibold text-cream">{item}</p>
+              </div>
+            ))}
           </motion.div>
         </div>
       </section>
 
-      <section className="bg-white py-24 sm:py-32">
+      <section className="bg-obsidian py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
+            <div>
+              <SectionLabel>{successStory.title}</SectionLabel>
+              <h2 className="font-editorial text-4xl leading-tight text-cream sm:text-5xl">
+                {successStory.author}, age {successStory.age}
+              </h2>
+              <p className="mt-6 text-lg leading-8 text-cream/68">{successStory.description}</p>
+            </div>
+            <div className="grid gap-5 sm:grid-cols-2">
+              {successStory.books.map((book) => (
+                <div key={book} className="rounded-lg border border-gold/24 bg-black/50 p-7 shadow-luxury">
+                  <BookOpen className="mb-6 h-7 w-7 text-gold" />
+                  <p className="font-editorial text-2xl leading-tight text-cream">{book}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <AddOnServicesSection />
+
+      <section className="bg-black py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <SectionLabel>Publishing Journey</SectionLabel>
-            <h2 className="font-editorial text-4xl leading-tight sm:text-5xl">
-              A calm path from first idea to public launch.
+            <h2 className="font-editorial text-4xl leading-tight text-cream sm:text-5xl">
+              A clear path from first idea to public launch.
             </h2>
           </div>
           <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -608,77 +481,39 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.04 }}
-                className="relative rounded-lg border border-navy/8 bg-white p-6 shadow-soft-card"
+                className="relative rounded-lg border border-gold/18 bg-charcoal p-6 shadow-luxury"
               >
-                <span className="font-editorial text-4xl text-gold">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <p className="mt-5 font-semibold">{step}</p>
+                <span className="font-editorial text-4xl text-gold">{String(index + 1).padStart(2, "0")}</span>
+                <p className="mt-5 font-semibold text-cream">{step}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-navy py-24 text-white sm:py-32">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <SectionLabel>Testimonials</SectionLabel>
-            <h2 className="font-editorial text-4xl leading-tight sm:text-5xl">
-              Authors remember the process as much as the book.
-            </h2>
-          </div>
-          <div className="mt-14 grid gap-5 lg:grid-cols-3">
-            {testimonials.map((testimonial) => (
-              <motion.figure
-                key={testimonial.name}
-                whileHover={{ y: -6 }}
-                className="glass-panel rounded-lg p-7"
-              >
-                <div className="mb-6 flex gap-1 text-gold">
-                  {Array.from({ length: 5 }).map((_, index) => (
-                    <Star key={index} className="h-4 w-4 fill-current" />
-                  ))}
-                </div>
-                <blockquote className="text-lg leading-8 text-white/84">
-                  "{testimonial.quote}"
-                </blockquote>
-                <figcaption className="mt-8">
-                  <p className="font-semibold text-white">{testimonial.name}</p>
-                  <p className="mt-1 text-sm text-white/56">{testimonial.role}</p>
-                </figcaption>
-              </motion.figure>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="faq" className="bg-ivory py-24 sm:py-32">
+      <section id="faq" className="bg-obsidian py-24 sm:py-32">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
           <div>
             <SectionLabel>FAQ</SectionLabel>
-            <h2 className="font-editorial text-4xl leading-tight sm:text-5xl">
+            <h2 className="font-editorial text-4xl leading-tight text-cream sm:text-5xl">
               Questions authors ask before beginning.
             </h2>
           </div>
           <div className="space-y-4">
             {faqs.map((faq) => (
-              <details
-                key={faq.question}
-                className="group rounded-lg border border-navy/8 bg-white p-6 shadow-soft-card"
-              >
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold">
+              <details key={faq.question} className="group rounded-lg border border-gold/18 bg-black/50 p-6 shadow-luxury">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-cream">
                   {faq.question}
                   <ChevronDown className="h-5 w-5 text-gold transition-transform group-open:rotate-180" />
                 </summary>
-                <p className="mt-4 leading-7 text-navy/66">{faq.answer}</p>
+                <p className="mt-4 leading-7 text-cream/66">{faq.answer}</p>
               </details>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="contact" className="relative bg-navy-radial px-4 py-24 text-white sm:px-6 sm:py-32 lg:px-8">
+      <section id="contact" className="relative bg-luxury-radial px-4 py-24 text-cream sm:px-6 sm:py-32 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -686,16 +521,23 @@ export default function HomePage() {
           className="mx-auto max-w-4xl text-center"
         >
           <CalendarCheck className="mx-auto mb-6 h-10 w-10 text-gold" />
-          <h2 className="font-editorial text-4xl leading-tight sm:text-6xl">
+          <h2 className="font-editorial text-4xl leading-tight text-cream sm:text-6xl">
             Your book is not just a project. It is your legacy.
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/72">
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-cream/72">
             Begin with a consultation and leave with a clearer publishing path,
             stronger positioning, and the next step toward becoming an author.
           </p>
           <div className="mt-9">
-            <PrimaryButton href="/contact" className="px-8">Book Free Consultation</PrimaryButton>
+            <PrimaryButton href="/contact" className="px-8">Book Consultation</PrimaryButton>
           </div>
+          <a
+            href={`mailto:${brand.email}`}
+            className="mt-5 inline-flex items-center justify-center gap-2 text-sm font-semibold text-gold hover:text-gold-light"
+          >
+            <Mail className="h-4 w-4" />
+            {brand.email}
+          </a>
         </motion.div>
       </section>
     </main>

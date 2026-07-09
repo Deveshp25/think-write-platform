@@ -9,11 +9,12 @@ import {
 import { ContactForm } from "@/components/forms/contact-form";
 import { ConsultationBookingForm } from "@/components/forms/consultation-booking-form";
 import { PublishingApplicationForm } from "@/components/forms/publishing-application-form";
+import { brand } from "@/lib/content/site";
 
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Book a free consultation with Think & Write Media & Publishing for book writing, publishing, author branding, PR, and Young Author Programme guidance.",
+    "Book a consultation with Think & Write Media & Publishing for book writing, publishing, author branding, PR, and Young Author Programme guidance.",
 };
 
 const contactOptions = [
@@ -29,7 +30,7 @@ const contactOptions = [
   },
   {
     title: "Email",
-    description: "Share your idea, manuscript stage, or package interest.",
+    description: brand.email,
     icon: Mail,
   },
   {
@@ -48,20 +49,20 @@ export default function ContactPage() {
         description="Tell us where you are in the author journey and we will help you choose the right next step."
       />
 
-      <section className="bg-white px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
+      <section className="bg-black px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
             <SectionLabel>Start Here</SectionLabel>
-            <h2 className="font-editorial text-4xl leading-tight sm:text-5xl">
-              Book a free consultation.
+            <h2 className="font-editorial text-4xl leading-tight text-cream sm:text-5xl">
+              Book a consultation.
             </h2>
-            <p className="mt-6 text-lg leading-8 text-navy/64">
+            <p className="mt-6 text-lg leading-8 text-cream/64">
               Use this page to begin a publishing inquiry, Young Author enquiry,
               or consultation request. The team will use your context to guide
               the right package and next step.
             </p>
             <div className="mt-8">
-              <ButtonLink href="mailto:hello@thinkandwrite.in" variant="outline">
+              <ButtonLink href={`mailto:${brand.email}`} variant="outline">
                 Email Your Enquiry
               </ButtonLink>
             </div>
@@ -71,21 +72,30 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="bg-ivory px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
+      <section className="bg-obsidian px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-2">
           <ContactForm />
           <PublishingApplicationForm />
         </div>
       </section>
 
-      <section className="bg-white px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
+      <section className="bg-black px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {contactOptions.map((option) => (
-              <div key={option.title} className="rounded-lg border border-navy/8 bg-white p-7 shadow-soft-card">
+              <div key={option.title} className="rounded-lg border border-gold/18 bg-charcoal p-7 shadow-luxury">
                 <option.icon className="mb-6 h-7 w-7 text-gold" />
-                <h3 className="text-xl font-semibold">{option.title}</h3>
-                <p className="mt-3 leading-7 text-navy/64">{option.description}</p>
+                <h3 className="text-xl font-semibold text-cream">{option.title}</h3>
+                {option.title === "Email" ? (
+                  <a
+                    href={`mailto:${brand.email}`}
+                    className="mt-3 block break-words leading-7 text-gold hover:text-gold-light"
+                  >
+                    {option.description}
+                  </a>
+                ) : (
+                  <p className="mt-3 leading-7 text-cream/64">{option.description}</p>
+                )}
               </div>
             ))}
           </div>

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { sendLeadNotification } from "@/lib/email/notifications";
 import { createSupabaseRouteClient } from "@/lib/supabase/server";
 import {
   asString,
@@ -71,6 +72,20 @@ export async function POST(request: Request) {
         { status: 500 },
       );
     }
+
+    await sendLeadNotification({
+      formName: "Consultation booking",
+      subject: "New consultation booking",
+      fields: {
+        Name: name,
+        Email: email,
+        Phone: phone,
+        "Package Interested": packageInterested,
+        "Preferred Date": preferredDate,
+        Message: message,
+        "User Agent": request.headers.get("user-agent"),
+      },
+    });
   } catch {
     return NextResponse.json(
       { ok: false, message: "Could not submit consultation booking.", errors: {} },

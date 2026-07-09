@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #0f172a;
-  --navy: #0f172a;
+  --background: #050505;
+  --foreground: #f8f1df;
+  --navy: #050505;
   --gold: #d4af37;
 }
 
@@ -29,8 +29,8 @@ body {
 }
 
 ::selection {
-  background: rgba(212, 175, 55, 0.34);
-  color: #0f172a;
+  background: rgba(212, 175, 55, 0.38);
+  color: #050505;
 }
 
 .font-editorial {
@@ -38,44 +38,33 @@ body {
 }
 
 .glass-panel {
-  background: rgba(255, 255, 255, 0.11);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.18);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.38);
   backdrop-filter: blur(24px) saturate(150%);
 }
 
 .gold-gradient-text {
-  background: linear-gradient(92deg, #f3df86 0%, #d4af37 42%, #fff6c5 100%);
+  background: linear-gradient(92deg, #f8e99f 0%, #d4af37 45%, #fff7ce 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-.book-spine {
-  transform-style: preserve-3d;
-  perspective: 1200px;
-}
-
-.hardcover-book {
-  transform-style: preserve-3d;
-}
-
-.book-cover-face {
-  transform: translateZ(34px);
-}
-
-.book-pages-face {
-  transform: rotateY(88deg) translateZ(148px);
-  transform-origin: left;
-}
-
-.book-back-face {
-  transform: translateZ(-34px);
-}
-
 .gold-glow {
   background:
-    radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.44), rgba(212, 175, 55, 0.16) 38%, transparent 68%);
+    radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.34), rgba(212, 175, 55, 0.12) 38%, transparent 70%);
+}
+
+input,
+select,
+textarea {
+  color: #f8f1df;
+}
+
+select option {
+  background: #12100d;
+  color: #f8f1df;
 }
 
 @media (prefers-reduced-motion: reduce) {

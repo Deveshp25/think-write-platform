@@ -47,18 +47,18 @@ export default function YoungAuthorsPage() {
       <PageHero
         eyebrow="Young Authors"
         title="Helping young writers turn imagination into published confidence."
-        description="A premium, parent-guided programme for students who want to develop a book idea, strengthen storytelling skills, and experience the pride of becoming an author."
+        description="A parent-guided programme for students aged 8-18 who want to develop a book idea, strengthen storytelling skills, and experience the pride of becoming an author."
       />
 
-      <section className="bg-white px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
+      <section className="bg-black px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
             <div>
               <SectionLabel>Programme Outcomes</SectionLabel>
-              <h2 className="font-editorial text-4xl leading-tight sm:text-5xl">
+              <h2 className="font-editorial text-4xl leading-tight text-cream sm:text-5xl">
                 Built for creativity, confidence, and guided achievement.
               </h2>
-              <p className="mt-6 text-lg leading-8 text-navy/64">
+              <p className="mt-6 text-lg leading-8 text-cream/64">
                 The programme balances imagination with structure so young writers
                 feel supported while developing a serious creative project.
               </p>
@@ -77,33 +77,33 @@ export default function YoungAuthorsPage() {
         </div>
       </section>
 
-      <section className="bg-ivory px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
+      <section className="bg-obsidian px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-3xl text-center">
             <SectionLabel>Application Flow</SectionLabel>
-            <h2 className="font-editorial text-4xl leading-tight sm:text-5xl">
+            <h2 className="font-editorial text-4xl leading-tight text-cream sm:text-5xl">
               A clear pathway for students and parents.
             </h2>
           </div>
           <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {steps.map((step, index) => (
-              <div key={step} className="rounded-lg border border-navy/8 bg-white p-6 shadow-soft-card">
+              <div key={step} className="rounded-lg border border-gold/18 bg-black/50 p-6 shadow-luxury">
                 <span className="font-editorial text-4xl text-gold">{index + 1}</span>
-                <h3 className="mt-5 font-semibold">{step}</h3>
+                <h3 className="mt-5 font-semibold text-cream">{step}</h3>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-white px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
+      <section className="bg-black px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
             <SectionLabel>Apply</SectionLabel>
-            <h2 className="font-editorial text-4xl leading-tight sm:text-5xl">
+            <h2 className="font-editorial text-4xl leading-tight text-cream sm:text-5xl">
               Submit a Young Author application.
             </h2>
-            <p className="mt-6 text-lg leading-8 text-navy/64">
+            <p className="mt-6 text-lg leading-8 text-cream/64">
               Parents can share the student's details, book idea, and goals so
               the team can review fit and recommend next steps.
             </p>

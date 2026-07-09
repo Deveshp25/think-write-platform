@@ -12,22 +12,31 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        navy: "#0F172A",
+        navy: "#050505",
+        black: "#050505",
+        obsidian: "#080604",
+        charcoal: "#12100D",
         gold: "#D4AF37",
-        ivory: "#F8F5EE",
-        ink: "#172033",
-        mist: "#E8ECF3",
+        "gold-light": "#F0D879",
+        bronze: "#8F6F22",
+        cream: "#F8F1DF",
+        ivory: "#100D09",
+        ink: "#F8F1DF",
+        mist: "#2A2118",
       },
       boxShadow: {
-        premium: "0 18px 55px rgba(15, 23, 42, 0.11)",
+        premium: "0 18px 55px rgba(212, 175, 55, 0.12)",
         gold: "0 22px 70px rgba(212, 175, 55, 0.24)",
-        "soft-card": "0 12px 34px rgba(15, 23, 42, 0.075)",
+        luxury: "0 24px 80px rgba(0, 0, 0, 0.38)",
+        "soft-card": "0 16px 46px rgba(0, 0, 0, 0.28)",
       },
       backgroundImage: {
         "navy-radial":
-          "linear-gradient(135deg, #0F172A 0%, #18243A 48%, #08111F 100%)",
+          "linear-gradient(135deg, #050505 0%, #12100D 48%, #000000 100%)",
+        "luxury-radial":
+          "radial-gradient(circle at 18% 12%, rgba(212,175,55,0.20), transparent 32%), linear-gradient(135deg, #050505 0%, #12100D 52%, #000000 100%)",
         "premium-surface":
-          "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(248,245,238,0.78) 100%)",
+          "linear-gradient(180deg, #0B0906 0%, #12100D 100%)",
       },
     },
   },

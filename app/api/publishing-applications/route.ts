@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { sendLeadNotification } from "@/lib/email/notifications";
 import { createSupabaseRouteClient } from "@/lib/supabase/server";
 import {
   asString,
@@ -77,6 +78,21 @@ export async function POST(request: Request) {
         { status: 500 },
       );
     }
+
+    await sendLeadNotification({
+      formName: "Publishing application",
+      subject: "New publishing application",
+      fields: {
+        Name: name,
+        Email: email,
+        Phone: phone,
+        "Package Interested": packageInterested,
+        "Book Title": bookTitle,
+        Genre: genre,
+        "Manuscript Status": manuscriptStatus,
+        Message: message,
+      },
+    });
   } catch {
     return NextResponse.json(
       { ok: false, message: "Could not submit publishing application.", errors: {} },

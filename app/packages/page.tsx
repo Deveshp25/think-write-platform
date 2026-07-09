@@ -7,6 +7,7 @@ import {
   PageShell,
   SectionLabel,
 } from "@/components/marketing/site-frame";
+import { packages } from "@/lib/content/site";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -15,37 +16,7 @@ export const metadata: Metadata = {
     "Compare Launchpad, Author Pro, Legacy Author, and Young Author Programme packages for premium book publishing support.",
 };
 
-const packages = [
-  {
-    name: "Launchpad",
-    price: "Rs. 14,999",
-    bestFor: "First-time authors who need publishing direction.",
-    icon: Rocket,
-    features: ["Publishing roadmap", "Manuscript review", "Amazon publishing guidance", "Launch checklist"],
-  },
-  {
-    name: "Author Pro",
-    price: "Rs. 34,999",
-    bestFor: "Serious authors who need writing, editing, and launch support.",
-    icon: Star,
-    featured: true,
-    features: ["Writing support", "Editing direction", "Cover strategy", "Brand launch plan"],
-  },
-  {
-    name: "Legacy Author",
-    price: "Rs. 74,999",
-    bestFor: "Founders, professionals, and thought leaders building authority.",
-    icon: Crown,
-    features: ["Ghostwriting strategy", "Premium positioning", "PR and media direction", "Legacy launch roadmap"],
-  },
-  {
-    name: "Young Author Programme",
-    price: "Rs. 19,999",
-    bestFor: "Students and young writers ready to become published authors.",
-    icon: Sparkles,
-    features: ["Writing mentorship", "Parent-guided process", "Book idea development", "Publishing confidence"],
-  },
-];
+const icons = [Rocket, Star, Crown, Sparkles];
 
 export default function PackagesPage() {
   return (
@@ -53,60 +24,82 @@ export default function PackagesPage() {
       <PageHero
         eyebrow="Packages"
         title="Choose the publishing path that matches your ambition."
-        description="Transparent packages for authors at different stages, from first manuscript guidance to premium legacy-building support."
+        description="Transparent publishing packages for debut authors, serious authors, legacy builders, and young writers."
       />
 
-      <section className="bg-white px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
+      <section className="bg-black px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-3xl text-center">
             <SectionLabel>Publishing Plans</SectionLabel>
-            <h2 className="font-editorial text-4xl leading-tight sm:text-5xl">
-              Clear options. Premium execution. No confusion.
+            <h2 className="font-editorial text-4xl leading-tight text-cream sm:text-5xl">
+              Premium black and gold publishing support with clear benefits.
             </h2>
           </div>
-          <div className="mt-14 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {packages.map((item) => (
-              <div
-                key={item.name}
-                className={cn(
-                  "rounded-lg border p-7 transition-all hover:-translate-y-1",
-                  item.featured
-                    ? "border-gold bg-navy text-white shadow-gold"
-                    : "border-navy/8 bg-white text-navy shadow-soft-card hover:border-gold/35",
-                )}
-              >
-                <item.icon className="mb-6 h-7 w-7 text-gold" />
-                <h3 className="text-2xl font-semibold">{item.name}</h3>
-                <p className="mt-4 font-editorial text-4xl">{item.price}</p>
-                <p className={cn("mt-4 leading-7", item.featured ? "text-white/68" : "text-navy/64")}>
-                  {item.bestFor}
-                </p>
-                <div className="mt-7 space-y-4">
-                  {item.features.map((feature) => (
-                    <div key={feature} className="flex gap-3 text-sm leading-6">
-                      <Check className="mt-1 h-4 w-4 shrink-0 text-gold" />
-                      <span className={item.featured ? "text-white/76" : "text-navy/70"}>{feature}</span>
+          <div className="mt-14 grid gap-5 lg:grid-cols-2">
+            {packages.map((item, index) => {
+              const Icon = icons[index] ?? Rocket;
+              return (
+                <article
+                  key={item.name}
+                  className={cn(
+                    "rounded-lg border p-7 shadow-luxury transition-all hover:-translate-y-1",
+                    item.featured
+                      ? "border-gold bg-gold text-black shadow-gold"
+                      : "border-gold/18 bg-charcoal text-cream hover:border-gold/45",
+                  )}
+                >
+                  <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-start">
+                    <div>
+                      <div
+                        className={cn(
+                          "mb-5 inline-flex rounded-full px-3 py-1 text-xs font-semibold",
+                          item.featured ? "bg-black/12 text-black" : "bg-gold/10 text-gold",
+                        )}
+                      >
+                        {item.featured ? "Flagship Package" : item.idealFor}
+                      </div>
+                      <h3 className="text-3xl font-semibold">{item.name}</h3>
+                      <p className="mt-4 font-editorial text-5xl">{item.price}</p>
                     </div>
-                  ))}
-                </div>
-                <ButtonLink href="/contact" variant={item.featured ? "gold" : "outline"} className="mt-8 w-full">
-                  Book Consultation
-                </ButtonLink>
-              </div>
-            ))}
+                    <Icon className={cn("h-9 w-9", item.featured ? "text-black" : "text-gold")} />
+                  </div>
+
+                  <p className={cn("mt-6 font-semibold", item.featured ? "text-black" : "text-cream")}>
+                    {item.includesLabel}:
+                  </p>
+                  <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                    {item.includes.map((feature) => (
+                      <div key={feature} className="flex gap-3 text-sm leading-6">
+                        <Check className={cn("mt-1 h-4 w-4 shrink-0", item.featured ? "text-black" : "text-gold")} />
+                        <span className={item.featured ? "text-black/74" : "text-cream/72"}>{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className={cn("mt-7 rounded-lg border p-4", item.featured ? "border-black/15 bg-black/8" : "border-gold/16 bg-black/30")}>
+                    <p className={cn("text-sm font-semibold", item.featured ? "text-black" : "text-gold")}>Ideal For</p>
+                    <p className={cn("mt-2 leading-7", item.featured ? "text-black/72" : "text-cream/68")}>{item.idealFor}</p>
+                  </div>
+
+                  <ButtonLink href="/contact" variant={item.featured ? "outline" : "gold"} className="mt-8 w-full">
+                    Book Consultation
+                  </ButtonLink>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section className="bg-ivory px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
-        <div className="mx-auto max-w-5xl rounded-lg border border-navy/8 bg-white p-6 shadow-soft-card sm:p-8">
+      <section className="bg-obsidian px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
+        <div className="mx-auto max-w-5xl rounded-lg border border-gold/18 bg-black/50 p-6 shadow-luxury sm:p-8">
           <SectionLabel>Recommendation</SectionLabel>
-          <h2 className="font-editorial text-3xl leading-tight sm:text-4xl">
+          <h2 className="font-editorial text-3xl leading-tight text-cream sm:text-4xl">
             Start with a consultation if you are between packages.
           </h2>
-          <p className="mt-5 max-w-3xl leading-8 text-navy/64">
-            The right plan depends on your manuscript readiness, publishing timeline,
-            authority goals, and how much strategic support you want before launch.
+          <p className="mt-5 max-w-3xl leading-8 text-cream/64">
+            The right plan depends on manuscript readiness, publishing timeline,
+            visibility needs, author copies, and how much strategic support you want before launch.
           </p>
         </div>
       </section>

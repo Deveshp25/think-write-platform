@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { sendLeadNotification } from "@/lib/email/notifications";
 import { createSupabaseRouteClient } from "@/lib/supabase/server";
 import {
   asString,
@@ -59,6 +60,18 @@ export async function POST(request: Request) {
         { status: 500 },
       );
     }
+
+    await sendLeadNotification({
+      formName: "Contact enquiry",
+      subject: "New contact enquiry",
+      fields: {
+        Name: name,
+        Email: email,
+        Phone: phone,
+        Interest: interest,
+        Message: message,
+      },
+    });
   } catch {
     return NextResponse.json(
       { ok: false, message: "Could not submit contact enquiry.", errors: {} },

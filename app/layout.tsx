@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { brand } from "@/lib/content/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -10,9 +11,14 @@ export const metadata: Metadata = {
   description:
     "Premium book writing, ghostwriting, editing, publishing, author branding, PR, Instagram growth, and launch support.",
   applicationName: "Think & Write Media & Publishing",
-  authors: [{ name: "Think & Write Media & Publishing Pvt. Ltd." }],
-  creator: "Think & Write Media & Publishing Pvt. Ltd.",
-  publisher: "Think & Write Media & Publishing Pvt. Ltd.",
+  authors: [{ name: brand.name }],
+  creator: brand.name,
+  publisher: brand.name,
+  icons: {
+    icon: brand.logoPath,
+    shortcut: brand.logoPath,
+    apple: brand.logoPath,
+  },
   formatDetection: {
     email: false,
     address: false,
@@ -21,8 +27,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0F172A",
-  colorScheme: "light",
+  themeColor: "#050505",
+  colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
 };

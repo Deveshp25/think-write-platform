@@ -1,15 +1,22 @@
 import type { Metadata } from "next";
+import { brand } from "@/lib/content/site";
 import HomePage from "./home-page";
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Think & Write Media & Publishing Pvt. Ltd.",
-  slogan: "Turning Ideas into Published Legacies",
+  name: brand.name,
+  slogan: brand.tagline,
   url: "https://thinkandwrite.in",
+  email: brand.email,
   brand: {
     "@type": "Brand",
     name: "Think & Write Media & Publishing",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: brand.email,
+    contactType: "customer support",
   },
   offers: [
     {
