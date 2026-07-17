@@ -63,6 +63,37 @@ export default function AddOnServicesPage() {
         </div>
       </section>
 
+
+      <section className="bg-black px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
+        <div className="mx-auto max-w-6xl">
+          <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+            <div>
+              <SectionLabel>Pricing</SectionLabel>
+              <h2 className="font-editorial text-4xl leading-tight text-cream sm:text-5xl">
+                Add-On Service Pricing
+              </h2>
+            </div>
+            <ButtonLink href="/contact" variant="gold">
+              Enquire Now
+            </ButtonLink>
+            <ButtonLink href={`mailto:${brand.email}`} variant="outline">
+              Email Us
+            </ButtonLink>
+          </div>
+
+          <div className="mt-12 overflow-hidden rounded-lg border border-gold/20 shadow-luxury">
+            {addOnPricing.map((item, index) => (
+              <div
+                key={item.service}
+                className="grid gap-3 border-b border-gold/12 bg-charcoal px-5 py-5 last:border-b-0 sm:grid-cols-[1fr_auto] sm:items-center"
+              >
+                <p className="font-semibold text-cream">{item.service}</p>
+                <p className="font-editorial text-2xl text-gold">{item.price}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
       <section className="bg-obsidian px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-3xl text-center">
@@ -75,13 +106,13 @@ export default function AddOnServicesPage() {
           <div className="mt-14 grid gap-5 lg:grid-cols-2">
             {founders.map((founder) => (
               <article key={founder.name} className="rounded-lg border border-gold/18 bg-black/50 p-7 shadow-luxury">
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">{founder.designation}</p>
-                <h3 className="mt-3 font-editorial text-3xl leading-tight text-cream">{founder.name}</h3>
+                <h3 className="font-editorial text-3xl leading-tight text-cream">{founder.name}</h3>
+                <p className="mt-3 text-sm font-semibold uppercase tracking-[0.2em] text-gold">{founder.designation}</p>
                 <p className="mt-4 leading-7 text-cream/64">{founder.summary}</p>
 
                 <div className="mt-6 grid gap-5 sm:grid-cols-2">
                   <div>
-                    <h4 className="font-semibold text-cream">Expertise</h4>
+                    <h4 className="font-semibold text-cream">Experience</h4>
                     <ul className="mt-3 space-y-2 text-sm leading-6 text-cream/66">
                       {founder.expertise.map((item) => (
                         <li key={item}>- {item}</li>
@@ -111,37 +142,6 @@ export default function AddOnServicesPage() {
                   </div>
                 ) : null}
               </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-black px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
-        <div className="mx-auto max-w-6xl">
-          <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
-            <div>
-              <SectionLabel>Pricing</SectionLabel>
-              <h2 className="font-editorial text-4xl leading-tight text-cream sm:text-5xl">
-                Add-On Service Pricing
-              </h2>
-            </div>
-            <ButtonLink href="/contact" variant="gold">
-              Enquire Now
-            </ButtonLink>
-            <ButtonLink href={`mailto:${brand.email}`} variant="outline">
-              Email Us
-            </ButtonLink>
-          </div>
-
-          <div className="mt-12 overflow-hidden rounded-lg border border-gold/20 shadow-luxury">
-            {addOnPricing.map((item, index) => (
-              <div
-                key={item.service}
-                className="grid gap-3 border-b border-gold/12 bg-charcoal px-5 py-5 last:border-b-0 sm:grid-cols-[1fr_auto] sm:items-center"
-              >
-                <p className="font-semibold text-cream">{item.service}</p>
-                <p className="font-editorial text-2xl text-gold">{item.price}</p>
-              </div>
             ))}
           </div>
         </div>

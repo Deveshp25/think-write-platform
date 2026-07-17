@@ -20,6 +20,8 @@ import {
 } from "lucide-react";
 import { AddOnServicesSection } from "@/components/marketing/add-on-services-section";
 import { BrandLogo } from "@/components/marketing/brand-logo";
+import { SiteFooter } from "@/components/marketing/site-frame";
+import { TestimonialsSection } from "@/components/marketing/testimonials-section";
 import { brand, coreServices, navigation, packages, successStory } from "@/lib/content/site";
 import { cn } from "@/lib/utils";
 
@@ -77,6 +79,31 @@ const faqs = [
     question: "Which package should I choose?",
     answer:
       "Launchpad fits debut authors, Author Pro fits authors seeking visibility, Legacy Author fits authority-building authors, and Young Author Programme fits writers aged 8-18.",
+  },
+  {
+    question: "Who owns copyright?",
+    answer:
+      "The author retains copyright ownership unless a separate written agreement states otherwise.",
+  },
+  {
+    question: "How do royalties work?",
+    answer:
+      "Royalties depend on the publishing platform, format, print cost, distribution settings, and the final sales channel.",
+  },
+  {
+    question: "What is the publishing timeline?",
+    answer:
+      "Timeline depends on manuscript readiness, editing depth, design rounds, formatting, approvals, and launch preparation.",
+  },
+  {
+    question: "Can you support international publishing?",
+    answer:
+      "Yes. The team can guide authors toward Amazon and global distribution readiness based on the chosen package.",
+  },
+  {
+    question: "Will my book be available on Amazon?",
+    answer:
+      "Amazon Kindle and paperback availability can be supported through publishing preparation, listing guidance, and setup assistance.",
   },
 ];
 
@@ -238,7 +265,7 @@ export default function HomePage() {
         <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-5 px-4 sm:px-6 lg:px-8">
           <BrandLogo imageClassName="w-24 sm:w-28" priority />
 
-          <div className="hidden items-center gap-5 text-sm font-medium text-cream/70 lg:flex">
+          <div className="hidden items-center gap-4 text-xs font-medium text-cream/70 xl:flex xl:text-sm">
             {navigation.map((item) => (
               <Link key={item.href} className="transition-colors hover:text-gold" href={item.href}>
                 {item.label}
@@ -358,6 +385,8 @@ export default function HomePage() {
         </div>
       </section>
 
+      <AddOnServicesSection />
+
       <section id="packages" className="relative bg-obsidian py-24 text-cream sm:py-32">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/55 to-transparent" />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -463,8 +492,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <AddOnServicesSection />
-
       <section className="bg-black py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
@@ -490,6 +517,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <TestimonialsSection />
 
       <section id="faq" className="bg-obsidian py-24 sm:py-32">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
@@ -540,6 +569,8 @@ export default function HomePage() {
           </a>
         </motion.div>
       </section>
+
+      <SiteFooter />
     </main>
   );
 }

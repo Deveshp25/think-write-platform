@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { BadgeCheck, BookMarked, Compass, Gem } from "lucide-react";
+import { BadgeCheck, BookMarked, Compass, Gem, Quote, UserRound } from "lucide-react";
 import {
   ButtonLink,
   FeatureCard,
@@ -39,6 +39,24 @@ const values = [
   },
 ];
 
+const founderStory = [
+  {
+    title: "Why Think & Write was started",
+    description:
+      "Think & Write was created for authors who need more than a printed book: they need clarity, structure, trust, and a publishing partner who understands the weight of an idea.",
+  },
+  {
+    title: "Publishing philosophy",
+    description:
+      "Every manuscript is treated as a legacy asset. The work begins with the author's intent, then moves through editorial depth, design quality, publishing readiness, and visibility.",
+  },
+  {
+    title: "Vision",
+    description:
+      "The vision is to build a refined publishing ecosystem where students, debut authors, experts, and leaders can turn their stories into credible, lasting public work.",
+  },
+];
+
 export default function AboutPage() {
   return (
     <PageShell>
@@ -72,6 +90,46 @@ export default function AboutPage() {
               <ButtonLink href={`mailto:${brand.email}`} variant="outline">
                 Email Think & Write
               </ButtonLink>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-obsidian px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-center">
+          <div className="rounded-lg border border-gold/22 bg-black/50 p-6 shadow-luxury">
+            <div className="flex aspect-[4/5] items-center justify-center rounded-lg border border-gold/24 bg-charcoal">
+              <div className="text-center">
+                <UserRound className="mx-auto h-12 w-12 text-gold" />
+                <p className="mt-4 text-sm font-semibold uppercase tracking-[0.22em] text-gold">
+                  Founder Photograph
+                </p>
+                <p className="mt-2 text-sm text-cream/52">Placeholder</p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <SectionLabel>Founder Message</SectionLabel>
+            <h2 className="font-editorial text-4xl leading-tight text-cream sm:text-5xl">
+              A publishing house built for authors who see their book as a legacy.
+            </h2>
+            <div className="mt-7 rounded-lg border border-gold/18 bg-black/50 p-7 shadow-luxury">
+              <Quote className="mb-5 h-8 w-8 text-gold" />
+              <p className="font-editorial text-2xl leading-9 text-cream">
+                We started Think & Write to give authors a premium, guided space
+                where ideas are not rushed into print, but shaped into work that
+                can carry their name, voice, and purpose with pride.
+              </p>
+            </div>
+
+            <div className="mt-6 grid gap-5 md:grid-cols-3">
+              {founderStory.map((item) => (
+                <article key={item.title} className="rounded-lg border border-gold/18 bg-charcoal p-6 shadow-luxury">
+                  <h3 className="text-lg font-semibold text-cream">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-cream/62">{item.description}</p>
+                </article>
+              ))}
             </div>
           </div>
         </div>

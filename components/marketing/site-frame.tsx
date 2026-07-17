@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
-import { ArrowRight, Mail, Sparkles } from "lucide-react";
+import { ArrowRight, Instagram, Linkedin, Mail, MapPin, Send, Sparkles, Youtube } from "lucide-react";
 import { BrandLogo } from "@/components/marketing/brand-logo";
 import { brand, navigation } from "@/lib/content/site";
 import { cn } from "@/lib/utils";
@@ -11,7 +11,7 @@ export function SiteHeader() {
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-5 px-4 sm:px-6 lg:px-8">
         <BrandLogo imageClassName="w-24 sm:w-28" priority />
 
-        <div className="hidden items-center gap-5 text-sm font-medium text-cream/70 lg:flex">
+        <div className="hidden items-center gap-4 text-xs font-medium text-cream/70 xl:flex xl:text-sm">
           {navigation.map((item) => (
             <Link key={item.href} className="transition-colors hover:text-gold" href={item.href}>
               {item.label}
@@ -31,9 +31,21 @@ export function SiteHeader() {
 }
 
 export function SiteFooter() {
+  const policies = [
+    "Privacy Policy",
+    "Refund Policy",
+    "Terms & Conditions",
+    "Shipping Policy",
+  ];
+  const socialLinks = [
+    { label: "Instagram", icon: Instagram },
+    { label: "LinkedIn", icon: Linkedin },
+    { label: "YouTube", icon: Youtube },
+  ];
+
   return (
     <footer className="bg-black px-4 py-14 text-cream sm:px-6 lg:px-8">
-      <div className="mx-auto grid max-w-7xl gap-10 border-t border-gold/15 pt-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+      <div className="mx-auto grid max-w-7xl gap-10 border-t border-gold/15 pt-10 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
           <BrandLogo imageClassName="w-56" />
           <p className="mt-4 max-w-md text-sm leading-6 text-cream/58">{brand.tagline}</p>
@@ -44,13 +56,77 @@ export function SiteFooter() {
             <Mail className="h-4 w-4" />
             {brand.email}
           </a>
+          <div className="mt-6 grid gap-2 text-sm leading-6 text-cream/50">
+            <p>Company Registration: To be updated</p>
+            <p>GST: To be updated</p>
+            <p>CIN: To be updated</p>
+          </div>
         </div>
-        <div className="flex flex-wrap gap-x-6 gap-y-3 text-sm text-cream/64 lg:justify-end">
-          {navigation.map((item) => (
-            <Link key={item.href} href={item.href} className="hover:text-gold">
-              {item.label}
-            </Link>
-          ))}
+
+        <div className="grid gap-8 md:grid-cols-2">
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">Explore</h3>
+            <div className="mt-4 grid gap-3 text-sm text-cream/64 sm:grid-cols-2">
+              {navigation.map((item) => (
+                <Link key={item.href} href={item.href} className="hover:text-gold">
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">Legal</h3>
+            <div className="mt-4 grid gap-3 text-sm text-cream/64">
+              {policies.map((policy) => (
+                <Link key={policy} href="#" className="hover:text-gold">
+                  {policy}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="rounded-lg border border-gold/18 bg-charcoal p-5 shadow-luxury">
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">Newsletter</h3>
+            <p className="mt-3 text-sm leading-6 text-cream/58">
+              Publishing insights, launch notes, and author growth ideas.
+            </p>
+            <form className="mt-4 flex gap-2">
+              <input
+                aria-label="Newsletter email"
+                type="email"
+                placeholder="Email address"
+                className="min-h-11 min-w-0 flex-1 rounded-lg border border-gold/20 bg-black/50 px-3 text-sm text-cream outline-none placeholder:text-cream/35 focus:border-gold"
+              />
+              <button
+                type="submit"
+                aria-label="Subscribe to newsletter"
+                className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-gold text-black shadow-gold transition hover:bg-gold-light"
+              >
+                <Send className="h-4 w-4" />
+              </button>
+            </form>
+          </div>
+
+          <div className="rounded-lg border border-gold/18 bg-charcoal p-5 shadow-luxury">
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">Visit</h3>
+            <div className="mt-4 flex items-start gap-3 text-sm leading-6 text-cream/58">
+              <MapPin className="mt-1 h-4 w-4 shrink-0 text-gold" />
+              <p>Google Maps location placeholder</p>
+            </div>
+            <div className="mt-5 flex gap-3">
+              {socialLinks.map((item) => (
+                <Link
+                  key={item.label}
+                  href="#"
+                  aria-label={item.label}
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-gold/24 bg-black/40 text-gold transition hover:border-gold/55 hover:bg-gold/10"
+                >
+                  <item.icon className="h-4 w-4" />
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </footer>

@@ -9,6 +9,7 @@ import {
   SectionLabel,
 } from "@/components/marketing/site-frame";
 import { YoungAuthorApplicationForm } from "@/components/forms/young-author-application-form";
+import { successStory } from "@/lib/content/site";
 
 export const metadata: Metadata = {
   title: "Young Authors",
@@ -52,7 +53,7 @@ export default function YoungAuthorsPage() {
 
       <section className="bg-black px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+          <div className="grid gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
             <div>
               <SectionLabel>Programme Outcomes</SectionLabel>
               <h2 className="font-editorial text-4xl leading-tight text-cream sm:text-5xl">
@@ -68,11 +69,30 @@ export default function YoungAuthorsPage() {
                 </ButtonLink>
               </div>
             </div>
-            <div className="grid gap-5 sm:grid-cols-2">
-              {outcomes.map((outcome) => (
-                <FeatureCard key={outcome.title} {...outcome} />
-              ))}
-            </div>
+
+            <article className="rounded-lg border border-gold/24 bg-charcoal p-7 shadow-luxury">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">
+                {successStory.title}
+              </p>
+              <h3 className="mt-3 font-editorial text-3xl leading-tight text-cream">
+                {successStory.author}, age {successStory.age}
+              </h3>
+              <p className="mt-4 leading-7 text-cream/64">{successStory.description}</p>
+              <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                {successStory.books.map((book) => (
+                  <div key={book} className="rounded-lg border border-gold/18 bg-black/40 p-5">
+                    <BookOpen className="mb-4 h-6 w-6 text-gold" />
+                    <p className="font-editorial text-xl leading-tight text-cream">{book}</p>
+                  </div>
+                ))}
+              </div>
+            </article>
+          </div>
+
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {outcomes.map((outcome) => (
+              <FeatureCard key={outcome.title} {...outcome} />
+            ))}
           </div>
         </div>
       </section>

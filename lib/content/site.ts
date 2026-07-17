@@ -1,8 +1,10 @@
 export const navigation = [
   { label: "Services", href: "/services" },
   { label: "Packages", href: "/packages" },
+  { label: "Books", href: "/published-books" },
   { label: "Young Authors", href: "/young-authors" },
   { label: "Add-On Services", href: "/add-on-services" },
+  { label: "Blog", href: "/blog" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
@@ -60,12 +62,90 @@ export const addOnServices = [
 
 export const successStory = {
   title: "Young Author Success Story",
-  author: "Sidhiksha Patel",
+  author: "Siddhiksha Patel",
   age: "13",
   books: ["Whispers of Elvoria", "Shadows Beneath: Whispers Of The Forgotten"],
   description:
-    "Sidhiksha Patel became a published author at age 13 through Think & Write Media & Publishing, demonstrating how young writers can transform imagination into professionally published books.",
+    "At just 13 years of age, Siddhiksha Patel has already established herself as a promising young author. She began writing at the age of 11, driven by a passion for storytelling and imagination.",
 };
+
+export const publishedBookCategories = [
+  "Fiction",
+  "Poetry",
+  "Biographies",
+  "Business Books",
+  "Children's Books",
+];
+
+export const publishingFeatureBlocks = [
+  "25+ Authors Guided",
+  "100% ISBN Support",
+  "Amazon Publishing Assistance",
+  "Young Authors Program",
+  "Personalized Publishing Consultation",
+];
+
+export const testimonials = [
+  {
+    author: "Author Name",
+    book: "Published Book Title",
+    review:
+      "Think & Write gave my idea structure, polish, and the confidence to move from manuscript to published book.",
+    videoReady: true,
+  },
+  {
+    author: "Young Author Parent",
+    book: "Young Author Book",
+    review:
+      "The process felt thoughtful and guided, with clear communication and a premium publishing experience.",
+    videoReady: true,
+  },
+  {
+    author: "Business Author",
+    book: "Authority Book",
+    review:
+      "The team helped shape the book as both a publishing project and a long-term author brand asset.",
+    videoReady: true,
+  },
+];
+
+export const blogPosts = [
+  {
+    title: "How to Publish Your First Book",
+    description: "A practical starting point for first-time authors preparing to publish professionally.",
+    category: "Publishing Guide",
+  },
+  {
+    title: "ISBN Explained",
+    description: "What an ISBN means, why it matters, and how authors should think about book identification.",
+    category: "Publishing Basics",
+  },
+  {
+    title: "Traditional vs Self Publishing",
+    description: "A clear comparison of control, timelines, investment, distribution, and author ownership.",
+    category: "Author Strategy",
+  },
+  {
+    title: "Amazon KDP Guide",
+    description: "A beginner-friendly overview of Kindle, paperback setup, listing readiness, and launch preparation.",
+    category: "Amazon Publishing",
+  },
+  {
+    title: "Book Marketing Tips",
+    description: "Visibility ideas for authors preparing social media, launch assets, and reader outreach.",
+    category: "Marketing",
+  },
+  {
+    title: "Publishing Costs",
+    description: "How to understand editing, design, formatting, ISBN, printing, and launch support costs.",
+    category: "Investment",
+  },
+  {
+    title: "Common Mistakes First-Time Authors Make",
+    description: "Avoidable publishing errors around editing, positioning, cover design, timelines, and launch planning.",
+    category: "First-Time Authors",
+  },
+];
 
 export const packages = [
   {
