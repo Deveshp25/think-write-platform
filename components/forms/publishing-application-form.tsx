@@ -10,9 +10,9 @@ import {
 
 const packageOptions = [
   { label: "Launchpad - Rs. 14,999", value: "launchpad" },
+  { label: "Young Author Programme - Rs. 19,999", value: "young_author_programme" },
   { label: "Author Pro - Rs. 34,999", value: "author_pro" },
   { label: "Legacy Author - Rs. 74,999", value: "legacy_author" },
-  { label: "Young Author Programme - Rs. 19,999", value: "young_author_programme" },
 ];
 
 const manuscriptOptions = [

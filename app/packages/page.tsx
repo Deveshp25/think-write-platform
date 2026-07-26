@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Packages",
   description:
-    "Compare Launchpad, Author Pro, Legacy Author, and Young Author Programme packages for premium book publishing support.",
+    "Compare Launchpad, Young Author Programme, Author Pro, and Legacy Author packages for premium book publishing support.",
 };
 
 const icons = [Rocket, Star, Crown, Sparkles];

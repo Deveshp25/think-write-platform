@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { brand } from "@/lib/content/site";
+import { brand, packages } from "@/lib/content/site";
 import HomePage from "./home-page";
 
 const organizationJsonLd = {
@@ -18,32 +18,12 @@ const organizationJsonLd = {
     email: brand.publicEmail,
     contactType: "customer support",
   },
-  offers: [
-    {
-      "@type": "Offer",
-      name: "Launchpad",
-      price: "14999",
-      priceCurrency: "INR",
-    },
-    {
-      "@type": "Offer",
-      name: "Author Pro",
-      price: "34999",
-      priceCurrency: "INR",
-    },
-    {
-      "@type": "Offer",
-      name: "Legacy Author",
-      price: "74999",
-      priceCurrency: "INR",
-    },
-    {
-      "@type": "Offer",
-      name: "Young Author Programme",
-      price: "19999",
-      priceCurrency: "INR",
-    },
-  ],
+  offers: packages.map((item) => ({
+    "@type": "Offer",
+    name: item.name,
+    price: item.price.replace(/\D/g, ""),
+    priceCurrency: "INR",
+  })),
 };
 
 export const metadata: Metadata = {

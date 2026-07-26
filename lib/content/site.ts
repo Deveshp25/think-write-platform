@@ -110,7 +110,7 @@ export const testimonials = [
     review:
       "Writing a book is like creating a world of your own, but bringing that world to readers requires the right guidance and support. Think & Write Media & Publishing understands an author's ideas, encourages creativity, and helps transform a manuscript into a professionally published book.\n\nAs a young author, what matters most to me is having the freedom to imagine, write, and express my stories while knowing that the publishing journey is being handled with care. Think & Write makes the entire experience encouraging, professional, and author-friendly.\n\nFor every aspiring writer—especially young authors who dream of seeing their name on a book—I believe Think & Write can be a wonderful place to begin their publishing journey.\n\n— Siddhiksha Patel\n\nYoung Author | Fantasy Fiction Writer\n\nAuthor of\n\n\"Shadows Beneath: Whispers of the Forgotten\"\n\n&\n\n\"Whispers of Elvoria\"",
     starRating: 5,
-    authorPhoto: "/people/siddhiksha-patel.jpeg",
+    authorPhoto: "/people/siddhiksha-patel-testimonial.jpeg",
     bookCover: null,
     videoUrl: null,
   },

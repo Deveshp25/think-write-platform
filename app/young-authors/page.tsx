@@ -94,7 +94,7 @@ export default function YoungAuthorsPage() {
                   alt={successStory.author}
                   width={1200}
                   height={900}
-                  className="aspect-[4/3] w-full object-cover object-center"
+                  className="aspect-[4/5] w-full object-cover object-center"
                 />
               </div>
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
