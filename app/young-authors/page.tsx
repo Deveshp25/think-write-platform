@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Metadata } from "next";
 import { BookOpen, GraduationCap, HeartHandshake, PenLine } from "lucide-react";
 import {
@@ -8,6 +9,7 @@ import {
   PageShell,
   SectionLabel,
 } from "@/components/marketing/site-frame";
+import { PublishedWorksSection } from "@/components/marketing/published-works-section";
 import { YoungAuthorApplicationForm } from "@/components/forms/young-author-application-form";
 import { successStory } from "@/lib/content/site";
 
@@ -75,9 +77,26 @@ export default function YoungAuthorsPage() {
                 {successStory.title}
               </p>
               <h3 className="mt-3 font-editorial text-3xl leading-tight text-cream">
-                {successStory.author}, age {successStory.age}
+                {successStory.author}
               </h3>
+              <div className="mt-5 flex flex-wrap gap-3">
+                <span className="rounded-full border border-gold/25 bg-gold/10 px-4 py-2 text-sm font-semibold text-gold">
+                  Age: {successStory.age}
+                </span>
+                <span className="rounded-full border border-gold/25 bg-gold/10 px-4 py-2 text-sm font-semibold text-gold">
+                  {successStory.startedWriting}
+                </span>
+              </div>
               <p className="mt-4 leading-7 text-cream/64">{successStory.description}</p>
+              <div className="mt-6 overflow-hidden rounded-lg border border-gold/18 bg-black/40">
+                <Image
+                  src={successStory.imagePath}
+                  alt={successStory.author}
+                  width={1200}
+                  height={900}
+                  className="aspect-[4/3] w-full bg-black object-contain object-left"
+                />
+              </div>
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 {successStory.books.map((book) => (
                   <div key={book} className="rounded-lg border border-gold/18 bg-black/40 p-5">
@@ -94,6 +113,8 @@ export default function YoungAuthorsPage() {
               <FeatureCard key={outcome.title} {...outcome} />
             ))}
           </div>
+
+          <PublishedWorksSection compact />
         </div>
       </section>
 

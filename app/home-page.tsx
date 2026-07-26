@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
@@ -20,6 +21,7 @@ import {
 } from "lucide-react";
 import { AddOnServicesSection } from "@/components/marketing/add-on-services-section";
 import { BrandLogo } from "@/components/marketing/brand-logo";
+import { PublishedWorksSection } from "@/components/marketing/published-works-section";
 import { SiteFooter } from "@/components/marketing/site-frame";
 import { TestimonialsSection } from "@/components/marketing/testimonials-section";
 import { brand, coreServices, navigation, packages, successStory } from "@/lib/content/site";
@@ -305,9 +307,9 @@ export default function HomePage() {
               variants={fadeUp}
               className="mt-7 max-w-2xl text-lg leading-8 text-cream/72 sm:text-xl sm:leading-9"
             >
-              {brand.name} helps authors shape manuscripts, publishing assets,
-              author branding, and launch visibility with a premium black and gold
-              publishing experience.
+              Think & Write Media & Publishing helps authors shape manuscripts,
+              publishing assets, author branding, and launch visibility with a
+              premium black and gold publishing experience.
             </motion.p>
             <motion.div variants={fadeUp} className="mt-9 flex flex-col gap-3 sm:flex-row">
               <PrimaryButton href="/contact">Book Consultation</PrimaryButton>
@@ -476,11 +478,28 @@ export default function HomePage() {
             <div>
               <SectionLabel>{successStory.title}</SectionLabel>
               <h2 className="font-editorial text-4xl leading-tight text-cream sm:text-5xl">
-                {successStory.author}, age {successStory.age}
+                {successStory.author}
               </h2>
+              <div className="mt-5 flex flex-wrap gap-3">
+                <span className="rounded-full border border-gold/25 bg-gold/10 px-4 py-2 text-sm font-semibold text-gold">
+                  Age: {successStory.age}
+                </span>
+                <span className="rounded-full border border-gold/25 bg-gold/10 px-4 py-2 text-sm font-semibold text-gold">
+                  {successStory.startedWriting}
+                </span>
+              </div>
               <p className="mt-6 text-lg leading-8 text-cream/68">{successStory.description}</p>
             </div>
             <div className="grid gap-5 sm:grid-cols-2">
+              <div className="overflow-hidden rounded-lg border border-gold/24 bg-black/50 shadow-luxury sm:col-span-2">
+                <Image
+                  src={successStory.imagePath}
+                  alt={successStory.author}
+                  width={1200}
+                  height={900}
+                  className="aspect-[4/3] w-full bg-black object-contain object-left"
+                />
+              </div>
               {successStory.books.map((book) => (
                 <div key={book} className="rounded-lg border border-gold/24 bg-black/50 p-7 shadow-luxury">
                   <BookOpen className="mb-6 h-7 w-7 text-gold" />
@@ -489,6 +508,8 @@ export default function HomePage() {
               ))}
             </div>
           </div>
+
+          <PublishedWorksSection compact />
         </div>
       </section>
 
@@ -561,11 +582,11 @@ export default function HomePage() {
             <PrimaryButton href="/contact" className="px-8">Book Consultation</PrimaryButton>
           </div>
           <a
-            href={`mailto:${brand.email}`}
+            href={`mailto:${brand.publicEmail}`}
             className="mt-5 inline-flex items-center justify-center gap-2 text-sm font-semibold text-gold hover:text-gold-light"
           >
             <Mail className="h-4 w-4" />
-            {brand.email}
+            {brand.publicEmail}
           </a>
         </motion.div>
       </section>

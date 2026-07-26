@@ -2,6 +2,7 @@ export const navigation = [
   { label: "Services", href: "/services" },
   { label: "Packages", href: "/packages" },
   { label: "Books", href: "/published-books" },
+  { label: "Testimonials", href: "/testimonials" },
   { label: "Young Authors", href: "/young-authors" },
   { label: "Add-On Services", href: "/add-on-services" },
   { label: "Blog", href: "/blog" },
@@ -14,7 +15,8 @@ export const brand = {
   shortName: "Think & Write",
   tagline: "Turning Ideas into Published Legacies",
   logoPath: "/brand/think-write-logo.jpeg",
-  email: "thinkwritemediapublishing@gmail.com",
+  email: "publishing@thinkandwrite.in",
+  publicEmail: "publishing@thinkandwrite.in",
 };
 
 export const coreServices = [
@@ -63,11 +65,26 @@ export const addOnServices = [
 export const successStory = {
   title: "Young Author Success Story",
   author: "Siddhiksha Patel",
-  age: "13",
-  books: ["Whispers of Elvoria", "Shadows Beneath: Whispers Of The Forgotten"],
+  age: "13 Years",
+  startedWriting: "Started writing at the age of 11",
+  books: ["Shadows Beneath: Whispers of the Forgotten", "Whispers of Elvoria"],
+  imagePath: "/people/siddhiksha-patel.jpeg",
   description:
-    "At just 13 years of age, Siddhiksha Patel has already established herself as a promising young author. She began writing at the age of 11, driven by a passion for storytelling and imagination.",
+    "Siddhiksha Patel is a young fantasy fiction writer who started writing at the age of 11.",
 };
+
+export const publishedWorks = [
+  {
+    title: "Shadows Beneath: Whispers of the Forgotten",
+    genre: "Fantasy Fiction",
+    amazonLink: "https://link.amazon/B04itBUzw",
+  },
+  {
+    title: "Whispers of Elvoria",
+    genre: "Fantasy Fiction",
+    amazonLink: "https://link.amazon/B0bemSyUE",
+  },
+];
 
 export const publishedBookCategories = [
   "Fiction",
@@ -87,25 +104,14 @@ export const publishingFeatureBlocks = [
 
 export const testimonials = [
   {
-    author: "Author Name",
-    book: "Published Book Title",
+    author: "Siddhiksha Patel",
+    book: "Young Author | Fantasy Fiction Writer",
     review:
-      "Think & Write gave my idea structure, polish, and the confidence to move from manuscript to published book.",
-    videoReady: true,
-  },
-  {
-    author: "Young Author Parent",
-    book: "Young Author Book",
-    review:
-      "The process felt thoughtful and guided, with clear communication and a premium publishing experience.",
-    videoReady: true,
-  },
-  {
-    author: "Business Author",
-    book: "Authority Book",
-    review:
-      "The team helped shape the book as both a publishing project and a long-term author brand asset.",
-    videoReady: true,
+      "Writing a book is like creating a world of your own, but bringing that world to readers requires the right guidance and support. Think & Write Media & Publishing understands an author's ideas, encourages creativity, and helps transform a manuscript into a professionally published book.\n\nAs a young author, what matters most to me is having the freedom to imagine, write, and express my stories while knowing that the publishing journey is being handled with care. Think & Write makes the entire experience encouraging, professional, and author-friendly.\n\nFor every aspiring writer—especially young authors who dream of seeing their name on a book—I believe Think & Write can be a wonderful place to begin their publishing journey.\n\n— Siddhiksha Patel\n\nYoung Author | Fantasy Fiction Writer\n\nAuthor of\n\n\"Shadows Beneath: Whispers of the Forgotten\"\n\n&\n\n\"Whispers of Elvoria\"",
+    starRating: 5,
+    authorPhoto: "/people/siddhiksha-patel.jpeg",
+    bookCover: null,
+    videoUrl: null,
   },
 ];
 
@@ -225,7 +231,8 @@ export const packages = [
 export const founders = [
   {
     name: "Vijay Patel",
-    designation: "Founder",
+    designation: "Founder & Managing Director",
+    imagePath: "/people/vijay-patel.jpeg",
     expertise: ["Company Leadership", "Business Strategy", "Partnerships", "Operations", "Growth"],
     responsibilities: ["Company Leadership", "Business Strategy", "Partnerships", "Operations", "Growth"],
     services: [],
@@ -233,24 +240,9 @@ export const founders = [
       "Leads the company direction, business operations, partnerships, growth planning, and institutional relationships.",
   },
   {
-    name: "Ritu",
-    designation: "Co-Founder",
-    expertise: ["Professional Writing", "Journalism", "Ghostwriting", "Author Mentorship", "Editorial Direction"],
-    responsibilities: [
-      "Editorial Standards",
-      "Ghostwriting Projects",
-      "Premium Author Coaching",
-      "Academy Curriculum Design",
-      "Media Articles",
-      "Writer Training",
-    ],
-    services: ["Ghostwriting", "Editorial Consulting", "Author Mentorship", "Content Writing", "Journalism Projects"],
-    summary:
-      "Guides editorial quality, writing direction, author mentorship, and premium content development.",
-  },
-  {
-    name: "Sonali Singh",
-    designation: "Co-Founder",
+    name: "Shonali Singh",
+    designation: "Book Reviewer",
+    imagePath: "/people/shonali-singh.jpeg",
     expertise: ["Book Reviewing", "Proofreading", "Editing", "Beta Reading", "Manuscript Feedback"],
     responsibilities: [
       "Manuscript Review",
@@ -266,7 +258,8 @@ export const founders = [
   },
   {
     name: "Shivaani Bhardwaj",
-    designation: "Co-Founder",
+    designation: "Brand Building & Design Partner",
+    imagePath: "/people/shivaani-bhardwaj.jpeg",
     expertise: ["Branding", "Graphic Design", "Cover Design", "Instagram Growth", "Author Visibility"],
     responsibilities: [
       "Cover Design",
@@ -288,7 +281,28 @@ export const founders = [
     summary:
       "Builds visual identity, launch creatives, personal branding systems, and author visibility campaigns.",
   },
+  {
+    name: "Richa & Ritu",
+    designation: "Academic & Content Strategists",
+    imagePath: "/people/ritu.jpeg",
+    expertise: ["Academic Strategy", "Content Strategy", "Editorial Direction", "Author Mentorship", "Writing Development"],
+    responsibilities: [
+      "Academic Strategy",
+      "Content Strategy",
+      "Editorial Direction",
+      "Author Mentorship",
+      "Writing Development",
+    ],
+    services: ["Editorial Consulting", "Author Mentorship", "Content Strategy", "Writing Development"],
+    summary:
+      "Work together on academic strategy, content planning, editorial direction, and author writing development.",
+  },
 ];
+
+export const founderCollage = {
+  imagePath: "/people/founder-collage.jpeg",
+  alt: "Think & Write Media & Publishing founder team collage",
+};
 
 export const addOnPricing = [
   { service: "ISBN Only", price: "Rs. 1,999" },
@@ -301,3 +315,16 @@ export const addOnPricing = [
   { service: "Social Media Campaign", price: "Rs. 10,000+" },
   { service: "School/Institution Bulk Publishing", price: "Custom" },
 ];
+
+
+export const businessRegistration = {
+  businessName: "Think and Write Media and Publishing",
+  registrationNumber: "INDO260702SE000362",
+  businessType: "Commercial Establishment",
+  owner: "VIJAY PATEL",
+  businessCommencementDate: "01/07/2026",
+  registrationDate: "02/07/2026",
+  validity: "Life Time",
+  registeredAddress: "C/O VIJAY PATEL, OLD AB ROAD, GAWALI PALASIA, MHOW, INDORE, MP-453441 Dist.-INDORE",
+  certificatePath: "/documents/think-write-gumasta.pdf",
+};

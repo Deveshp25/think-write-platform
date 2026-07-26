@@ -8,14 +8,14 @@ const organizationJsonLd = {
   name: brand.name,
   slogan: brand.tagline,
   url: "https://thinkandwrite.in",
-  email: brand.email,
+  email: brand.publicEmail,
   brand: {
     "@type": "Brand",
     name: "Think & Write Media & Publishing",
   },
   contactPoint: {
     "@type": "ContactPoint",
-    email: brand.email,
+    email: brand.publicEmail,
     contactType: "customer support",
   },
   offers: [

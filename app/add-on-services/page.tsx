@@ -76,7 +76,7 @@ export default function AddOnServicesPage() {
             <ButtonLink href="/contact" variant="gold">
               Enquire Now
             </ButtonLink>
-            <ButtonLink href={`mailto:${brand.email}`} variant="outline">
+            <ButtonLink href={`mailto:${brand.publicEmail}`} variant="outline">
               Email Us
             </ButtonLink>
           </div>

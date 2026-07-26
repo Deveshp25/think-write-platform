@@ -1,5 +1,6 @@
+import Image from "next/image";
 import type { Metadata } from "next";
-import { BadgeCheck, BookMarked, Compass, Gem, Quote, UserRound } from "lucide-react";
+import { BadgeCheck, BookMarked, Compass, Gem, Quote } from "lucide-react";
 import {
   ButtonLink,
   FeatureCard,
@@ -8,7 +9,7 @@ import {
   PageShell,
   SectionLabel,
 } from "@/components/marketing/site-frame";
-import { brand, founders } from "@/lib/content/site";
+import { brand, founderCollage, founders } from "@/lib/content/site";
 
 export const metadata: Metadata = {
   title: "About",
@@ -87,7 +88,7 @@ export default function AboutPage() {
               and modern brand communication.
             </p>
             <div>
-              <ButtonLink href={`mailto:${brand.email}`} variant="outline">
+              <ButtonLink href={`mailto:${brand.publicEmail}`} variant="outline">
                 Email Think & Write
               </ButtonLink>
             </div>
@@ -98,15 +99,13 @@ export default function AboutPage() {
       <section className="bg-obsidian px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-center">
           <div className="rounded-lg border border-gold/22 bg-black/50 p-6 shadow-luxury">
-            <div className="flex aspect-[4/5] items-center justify-center rounded-lg border border-gold/24 bg-charcoal">
-              <div className="text-center">
-                <UserRound className="mx-auto h-12 w-12 text-gold" />
-                <p className="mt-4 text-sm font-semibold uppercase tracking-[0.22em] text-gold">
-                  Founder Photograph
-                </p>
-                <p className="mt-2 text-sm text-cream/52">Placeholder</p>
-              </div>
-            </div>
+            <Image
+              src={founderCollage.imagePath}
+              alt={founderCollage.alt}
+              width={1024}
+              height={1536}
+              className="aspect-[2/3] w-full rounded-lg border border-gold/24 object-contain"
+            />
           </div>
 
           <div>
@@ -140,39 +139,30 @@ export default function AboutPage() {
           <div className="mx-auto max-w-3xl text-center">
             <SectionLabel>Founders</SectionLabel>
             <h2 className="font-editorial text-4xl leading-tight text-cream sm:text-5xl">
-              Founder and Co-Founder profiles.
+              Founder and team information.
             </h2>
           </div>
-          <div className="mt-14 grid gap-5 lg:grid-cols-2">
-            {founders.map((founder) => (
-              <article key={founder.name} className="rounded-lg border border-gold/18 bg-black/50 p-7 shadow-luxury">
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">{founder.designation}</p>
-                <h3 className="mt-3 font-editorial text-3xl leading-tight text-cream">{founder.name}</h3>
-                <p className="mt-4 leading-7 text-cream/64">{founder.summary}</p>
-                <div className="mt-6">
-                  <h4 className="font-semibold text-cream">Responsibilities</h4>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {founder.responsibilities.map((item) => (
-                      <span key={item} className="rounded-full border border-gold/25 bg-gold/10 px-3 py-1 text-xs font-semibold text-gold">
-                        {item}
-                      </span>
-                    ))}
+          <div className="mt-14 grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
+            <div className="rounded-lg border border-gold/22 bg-black/50 p-5 shadow-luxury">
+              <Image
+                src={founderCollage.imagePath}
+                alt={founderCollage.alt}
+                width={1024}
+                height={1536}
+                className="aspect-[2/3] w-full rounded-lg border border-gold/18 object-contain"
+              />
+            </div>
+            <div className="rounded-lg border border-gold/18 bg-black/50 p-7 shadow-luxury">
+              <div className="space-y-7">
+                {founders.map((founder) => (
+                  <div key={founder.name} className="border-b border-gold/12 pb-7 last:border-b-0 last:pb-0">
+                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">{founder.designation}</p>
+                    <h3 className="mt-3 font-editorial text-3xl leading-tight text-cream">{founder.name}</h3>
+                    <p className="mt-4 leading-7 text-cream/64">{founder.summary}</p>
                   </div>
-                </div>
-                {founder.services.length > 0 ? (
-                  <div className="mt-6">
-                    <h4 className="font-semibold text-cream">Add-On Services</h4>
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      {founder.services.map((item) => (
-                        <span key={item} className="rounded-full border border-cream/12 bg-white/6 px-3 py-1 text-xs font-medium text-cream/72">
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                ) : null}
-              </article>
-            ))}
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>

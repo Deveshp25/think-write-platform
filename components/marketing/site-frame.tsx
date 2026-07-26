@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
 import { ArrowRight, Instagram, Linkedin, Mail, MapPin, Send, Sparkles, Youtube } from "lucide-react";
 import { BrandLogo } from "@/components/marketing/brand-logo";
-import { brand, navigation } from "@/lib/content/site";
+import { brand, businessRegistration, navigation } from "@/lib/content/site";
 import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
@@ -31,11 +31,17 @@ export function SiteHeader() {
 }
 
 export function SiteFooter() {
-  const policies = [
-    "Privacy Policy",
-    "Refund Policy",
-    "Terms & Conditions",
-    "Shipping Policy",
+  const footerLinks = [
+    { label: "Privacy Policy", href: "/privacy-policy" },
+    { label: "Terms & Conditions", href: "/terms-and-conditions" },
+    { label: "Refund & Cancellation Policy", href: "/refund-policy" },
+    { label: "Shipping & Delivery Policy", href: "/shipping-policy" },
+    { label: "Legal Information", href: "/legal-information" },
+    { label: "Business Registration", href: "/business-registration" },
+    { label: "Testimonials", href: "/testimonials" },
+    { label: "Young Authors", href: "/young-authors" },
+    { label: "Published Books", href: "/published-books" },
+    { label: "Blog", href: "/blog" },
   ];
   const socialLinks = [
     { label: "Instagram", icon: Instagram },
@@ -50,16 +56,16 @@ export function SiteFooter() {
           <BrandLogo imageClassName="w-56" />
           <p className="mt-4 max-w-md text-sm leading-6 text-cream/58">{brand.tagline}</p>
           <a
-            href={`mailto:${brand.email}`}
+            href={`mailto:${brand.publicEmail}`}
             className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-gold hover:text-gold-light"
           >
             <Mail className="h-4 w-4" />
-            {brand.email}
+            {brand.publicEmail}
           </a>
           <div className="mt-6 grid gap-2 text-sm leading-6 text-cream/50">
-            <p>Company Registration: To be updated</p>
+            <p>Company Registration: INDO260702SE000362</p>
             <p>GST: To be updated</p>
-            <p>CIN: To be updated</p>
+            <p>CIN: Not applicable / To be updated</p>
           </div>
         </div>
 
@@ -78,9 +84,9 @@ export function SiteFooter() {
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">Legal</h3>
             <div className="mt-4 grid gap-3 text-sm text-cream/64">
-              {policies.map((policy) => (
-                <Link key={policy} href="#" className="hover:text-gold">
-                  {policy}
+              {footerLinks.map((item) => (
+                <Link key={item.href} href={item.href} className="hover:text-gold">
+                  {item.label}
                 </Link>
               ))}
             </div>
@@ -112,7 +118,7 @@ export function SiteFooter() {
             <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">Visit</h3>
             <div className="mt-4 flex items-start gap-3 text-sm leading-6 text-cream/58">
               <MapPin className="mt-1 h-4 w-4 shrink-0 text-gold" />
-              <p>Google Maps location placeholder</p>
+              <p>{businessRegistration.registeredAddress}</p>
             </div>
             <div className="mt-5 flex gap-3">
               {socialLinks.map((item) => (
@@ -259,7 +265,7 @@ export function FinalCta({
           <ButtonLink href="/contact" variant="gold">
             Book Consultation
           </ButtonLink>
-          <ButtonLink href={`mailto:${brand.email}`} variant="outline">
+          <ButtonLink href={`mailto:${brand.publicEmail}`} variant="outline">
             Email Us
           </ButtonLink>
         </div>

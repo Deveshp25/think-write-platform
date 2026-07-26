@@ -30,7 +30,7 @@ const contactOptions = [
   },
   {
     title: "Email",
-    description: brand.email,
+    description: brand.publicEmail,
     icon: Mail,
   },
   {
@@ -62,7 +62,7 @@ export default function ContactPage() {
               the right package and next step.
             </p>
             <div className="mt-8">
-              <ButtonLink href={`mailto:${brand.email}`} variant="outline">
+              <ButtonLink href={`mailto:${brand.publicEmail}`} variant="outline">
                 Email Your Enquiry
               </ButtonLink>
             </div>
@@ -88,7 +88,7 @@ export default function ContactPage() {
                 <h3 className="text-xl font-semibold text-cream">{option.title}</h3>
                 {option.title === "Email" ? (
                   <a
-                    href={`mailto:${brand.email}`}
+                    href={`mailto:${brand.publicEmail}`}
                     className="mt-3 block break-words leading-7 text-gold hover:text-gold-light"
                   >
                     {option.description}

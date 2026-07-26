@@ -7,6 +7,7 @@ import {
   PageShell,
   SectionLabel,
 } from "@/components/marketing/site-frame";
+import { PublishedWorksSection } from "@/components/marketing/published-works-section";
 import { publishedBookCategories, publishingFeatureBlocks } from "@/lib/content/site";
 
 export const metadata: Metadata = {
@@ -33,6 +34,8 @@ export default function PublishedBooksPage() {
         title="A growing publishing catalogue for ambitious authors and young voices."
         description="Think & Write supports authors across genres with editorial guidance, ISBN support, Amazon publishing assistance, and personalized consultation."
       />
+
+      <PublishedWorksSection />
 
       <section className="bg-black px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
         <div className="mx-auto max-w-7xl">
