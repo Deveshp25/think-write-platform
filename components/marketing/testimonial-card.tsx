@@ -22,7 +22,7 @@ export function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
               alt={testimonial.author}
               width={260}
               height={260}
-              className="h-full w-full object-cover object-[18%_center]"
+              className="h-full w-full object-cover object-center"
             />
           ) : null}
         </div>

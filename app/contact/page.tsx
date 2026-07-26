@@ -4,6 +4,7 @@ import {
   ButtonLink,
   PageHero,
   PageShell,
+  PublicEmailLinks,
   SectionLabel,
 } from "@/components/marketing/site-frame";
 import { ContactForm } from "@/components/forms/contact-form";
@@ -30,7 +31,7 @@ const contactOptions = [
   },
   {
     title: "Email",
-    description: brand.publicEmail,
+    description: "Official publishing emails",
     icon: Mail,
   },
   {
@@ -87,12 +88,7 @@ export default function ContactPage() {
                 <option.icon className="mb-6 h-7 w-7 text-gold" />
                 <h3 className="text-xl font-semibold text-cream">{option.title}</h3>
                 {option.title === "Email" ? (
-                  <a
-                    href={`mailto:${brand.publicEmail}`}
-                    className="mt-3 block break-words leading-7 text-gold hover:text-gold-light"
-                  >
-                    {option.description}
-                  </a>
+                  <PublicEmailLinks className="mt-3" linkClassName="leading-7" />
                 ) : (
                   <p className="mt-3 leading-7 text-cream/64">{option.description}</p>
                 )}

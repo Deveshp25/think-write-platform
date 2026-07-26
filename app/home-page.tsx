@@ -12,7 +12,6 @@ import {
   ChevronDown,
   Feather,
   FileText,
-  Mail,
   Megaphone,
   PenLine,
   ShieldCheck,
@@ -22,7 +21,7 @@ import {
 import { AddOnServicesSection } from "@/components/marketing/add-on-services-section";
 import { BrandLogo } from "@/components/marketing/brand-logo";
 import { PublishedWorksSection } from "@/components/marketing/published-works-section";
-import { SiteFooter } from "@/components/marketing/site-frame";
+import { PublicEmailLinks, SiteFooter } from "@/components/marketing/site-frame";
 import { TestimonialsSection } from "@/components/marketing/testimonials-section";
 import { brand, coreServices, navigation, packages, successStory } from "@/lib/content/site";
 import { cn } from "@/lib/utils";
@@ -497,7 +496,7 @@ export default function HomePage() {
                   alt={successStory.author}
                   width={1200}
                   height={900}
-                  className="aspect-[4/3] w-full bg-black object-contain object-left"
+                  className="aspect-[4/3] w-full object-cover object-center"
                 />
               </div>
               {successStory.books.map((book) => (
@@ -581,13 +580,7 @@ export default function HomePage() {
           <div className="mt-9">
             <PrimaryButton href="/contact" className="px-8">Book Consultation</PrimaryButton>
           </div>
-          <a
-            href={`mailto:${brand.publicEmail}`}
-            className="mt-5 inline-flex items-center justify-center gap-2 text-sm font-semibold text-gold hover:text-gold-light"
-          >
-            <Mail className="h-4 w-4" />
-            {brand.publicEmail}
-          </a>
+          <PublicEmailLinks className="mt-5 items-center" linkClassName="font-semibold" />
         </motion.div>
       </section>
 

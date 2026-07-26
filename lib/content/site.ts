@@ -11,12 +11,13 @@ export const navigation = [
 ];
 
 export const brand = {
-  name: "Think & Write Media & Publishing Pvt. Ltd.",
+  name: "Think & Write Media & Publishing",
   shortName: "Think & Write",
   tagline: "Turning Ideas into Published Legacies",
   logoPath: "/brand/think-write-logo.jpeg",
-  email: "publishing@thinkandwrite.in",
+  email: "thinkwritemediapublishing@gmail.com",
   publicEmail: "publishing@thinkandwrite.in",
+  publicEmails: ["publishing@thinkandwrite.in", "thinkwritemediapublishing@gmail.com"],
 };
 
 export const coreServices = [
@@ -173,6 +174,22 @@ export const packages = [
     ],
   },
   {
+    name: "Young Author Programme",
+    price: "Rs. 19,999",
+    idealFor: "Target Age: 8-18 Years",
+    featured: false,
+    includesLabel: "Includes",
+    includes: [
+      "Publishing",
+      "Author Certificate",
+      "Amazon Listing",
+      "School Launch Toolkit",
+      "Author Posters",
+      "Social Media Creatives",
+      "Media Coverage Draft",
+    ],
+  },
+  {
     name: "Author Pro",
     price: "Rs. 34,999",
     idealFor: "Serious authors seeking visibility",
@@ -208,22 +225,6 @@ export const packages = [
       "25 Social Media Creatives",
       "50 Author Copies",
       "One-Year Author Support",
-    ],
-  },
-  {
-    name: "Young Author Programme",
-    price: "Rs. 19,999",
-    idealFor: "Target Age: 8-18 Years",
-    featured: false,
-    includesLabel: "Includes",
-    includes: [
-      "Publishing",
-      "Author Certificate",
-      "Amazon Listing",
-      "School Launch Toolkit",
-      "Author Posters",
-      "Social Media Creatives",
-      "Media Coverage Draft",
     ],
   },
 ];

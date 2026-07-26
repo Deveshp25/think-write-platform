@@ -14,7 +14,7 @@ import { brand, founderCollage, founders } from "@/lib/content/site";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Learn about Think & Write Media & Publishing Pvt. Ltd., its founders, mission, vision, and premium approach to publishing, branding, and legacy creation.",
+    "Learn about Think & Write Media & Publishing, its founders, mission, vision, and premium approach to publishing, branding, and legacy creation.",
 };
 
 const values = [
@@ -64,7 +64,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="About"
         title="A publishing, branding, and legacy creation house."
-        description="Think & Write Media & Publishing Pvt. Ltd. exists to help ideas become professionally published books, author brands, and long-term creative legacies."
+        description="Think & Write Media & Publishing exists to help ideas become professionally published books, author brands, and long-term creative legacies."
       />
 
       <section className="bg-black px-4 py-24 sm:px-6 sm:py-32 lg:px-8">

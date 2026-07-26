@@ -1,8 +1,8 @@
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
-import { ArrowRight, Instagram, Linkedin, Mail, MapPin, Send, Sparkles, Youtube } from "lucide-react";
+import { ArrowRight, Instagram, Linkedin, Mail, Send, Sparkles, Youtube } from "lucide-react";
 import { BrandLogo } from "@/components/marketing/brand-logo";
-import { brand, businessRegistration, navigation } from "@/lib/content/site";
+import { brand, navigation } from "@/lib/content/site";
 import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
@@ -55,13 +55,7 @@ export function SiteFooter() {
         <div>
           <BrandLogo imageClassName="w-56" />
           <p className="mt-4 max-w-md text-sm leading-6 text-cream/58">{brand.tagline}</p>
-          <a
-            href={`mailto:${brand.publicEmail}`}
-            className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-gold hover:text-gold-light"
-          >
-            <Mail className="h-4 w-4" />
-            {brand.publicEmail}
-          </a>
+          <PublicEmailLinks className="mt-4" />
           <div className="mt-6 grid gap-2 text-sm leading-6 text-cream/50">
             <p>Company Registration: INDO260702SE000362</p>
             <p>GST: To be updated</p>
@@ -115,11 +109,7 @@ export function SiteFooter() {
           </div>
 
           <div className="rounded-lg border border-gold/18 bg-charcoal p-5 shadow-luxury">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">Visit</h3>
-            <div className="mt-4 flex items-start gap-3 text-sm leading-6 text-cream/58">
-              <MapPin className="mt-1 h-4 w-4 shrink-0 text-gold" />
-              <p>{businessRegistration.registeredAddress}</p>
-            </div>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">Social</h3>
             <div className="mt-5 flex gap-3">
               {socialLinks.map((item) => (
                 <Link
@@ -134,8 +124,34 @@ export function SiteFooter() {
             </div>
           </div>
         </div>
+        <div className="lg:col-span-2 border-t border-gold/12 pt-6 text-sm text-cream/46">
+          <p>Copyright 2026 {brand.name}. All rights reserved.</p>
+        </div>
       </div>
     </footer>
+  );
+}
+
+export function PublicEmailLinks({
+  className,
+  linkClassName,
+}: {
+  className?: string;
+  linkClassName?: string;
+}) {
+  return (
+    <div className={cn("flex flex-col gap-2", className)}>
+      {brand.publicEmails.map((email) => (
+        <a
+          key={email}
+          href={`mailto:${email}`}
+          className={cn("inline-flex items-center gap-2 break-words text-sm font-medium text-gold hover:text-gold-light", linkClassName)}
+        >
+          <Mail className="h-4 w-4 shrink-0" />
+          {email}
+        </a>
+      ))}
+    </div>
   );
 }
 

@@ -102,7 +102,7 @@ export const legalPages: Record<LegalPageSlug, { title: string; lines: string[] 
       "For privacy-related questions, requests or grievances, please contact:",
       "**Think & Write Media & Publishing**",
       "Website: thinkandwrite.in",
-      "Email: [publishing@thinkandwrite.in](mailto:publishing@thinkandwrite.in)",
+      "Email: [publishing@thinkandwrite.in](mailto:publishing@thinkandwrite.in) / [thinkwritemediapublishing@gmail.com](mailto:thinkwritemediapublishing@gmail.com)",
       "India",
       "Additional registered-office and grievance-contact details may be added as applicable."
     ]
@@ -183,7 +183,7 @@ export const legalPages: Record<LegalPageSlug, { title: string; lines: string[] 
       "* Reason for cancellation/refund request",
       "Contact:",
       "**Think & Write Media & Publishing**",
-      "Email: [publishing@thinkandwrite.in](mailto:publishing@thinkandwrite.in)",
+      "Email: [publishing@thinkandwrite.in](mailto:publishing@thinkandwrite.in) / [thinkwritemediapublishing@gmail.com](mailto:thinkwritemediapublishing@gmail.com)",
       "Website: thinkandwrite.in",
       "All eligible refund requests will be assessed according to the project stage, services already delivered, costs incurred and applicable law."
     ]
@@ -336,7 +336,7 @@ export const legalPages: Record<LegalPageSlug, { title: string; lines: string[] 
       "For questions regarding these Terms:",
       "**Think & Write Media & Publishing**",
       "Website: thinkandwrite.in",
-      "Email: [publishing@thinkandwrite.in](mailto:publishing@thinkandwrite.in)",
+      "Email: [publishing@thinkandwrite.in](mailto:publishing@thinkandwrite.in) / [thinkwritemediapublishing@gmail.com](mailto:thinkwritemediapublishing@gmail.com)",
       "India"
     ]
   },
@@ -440,7 +440,7 @@ export const legalPages: Record<LegalPageSlug, { title: string; lines: string[] 
       "For shipping or delivery assistance:",
       "**Think & Write Media & Publishing**",
       "Website: thinkandwrite.in",
-      "Email: [publishing@thinkandwrite.in](mailto:publishing@thinkandwrite.in)",
+      "Email: [publishing@thinkandwrite.in](mailto:publishing@thinkandwrite.in) / [thinkwritemediapublishing@gmail.com](mailto:thinkwritemediapublishing@gmail.com)",
       "India"
     ]
   },
@@ -454,7 +454,7 @@ export const legalPages: Record<LegalPageSlug, { title: string; lines: string[] 
       "**Business Name:** Think & Write Media & Publishing",
       "**Brand:** Think & Write",
       "**Website:** thinkandwrite.in",
-      "**Email:** [publishing@thinkandwrite.in](mailto:publishing@thinkandwrite.in)",
+      "**Email:** [publishing@thinkandwrite.in](mailto:publishing@thinkandwrite.in) / [thinkwritemediapublishing@gmail.com](mailto:thinkwritemediapublishing@gmail.com)",
       "**Country:** India",
       "**Registered Office:** [Insert Registered Business Address]",
       "**GSTIN:** [Insert GSTIN, if applicable]",
@@ -476,7 +476,7 @@ export const legalPages: Record<LegalPageSlug, { title: string; lines: string[] 
       "For service-related complaints, grievances or legal communication, please contact:",
       "**Grievance / Customer Support**",
       "Think & Write Media & Publishing",
-      "Email: [publishing@thinkandwrite.in](mailto:publishing@thinkandwrite.in)",
+      "Email: [publishing@thinkandwrite.in](mailto:publishing@thinkandwrite.in) / [thinkwritemediapublishing@gmail.com](mailto:thinkwritemediapublishing@gmail.com)",
       "**Grievance Officer:** [Insert Name]",
       "**Registered Address:** [Insert Registered Address]",
       "We will make reasonable efforts to acknowledge and address legitimate grievances in accordance with applicable law.",
