@@ -21,7 +21,7 @@ import {
 import { AddOnServicesSection } from "@/components/marketing/add-on-services-section";
 import { BrandLogo } from "@/components/marketing/brand-logo";
 import { PublishedWorksSection } from "@/components/marketing/published-works-section";
-import { PublicEmailLinks, SiteFooter } from "@/components/marketing/site-frame";
+import { PublicEmailLinks, SiteFooter, SocialFollowSection } from "@/components/marketing/site-frame";
 import { TestimonialsSection } from "@/components/marketing/testimonials-section";
 import { brand, coreServices, navigation, packages, successStory } from "@/lib/content/site";
 import { cn } from "@/lib/utils";
@@ -584,6 +584,7 @@ export default function HomePage() {
         </motion.div>
       </section>
 
+      <SocialFollowSection />
       <SiteFooter />
     </main>
   );

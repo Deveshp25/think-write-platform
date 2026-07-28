@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
-import { ArrowRight, Instagram, Linkedin, Mail, Send, Sparkles, Youtube } from "lucide-react";
+import { ArrowRight, Facebook, Instagram, Linkedin, Mail, Send, Sparkles, Youtube } from "lucide-react";
 import { BrandLogo } from "@/components/marketing/brand-logo";
 import { brand, navigation } from "@/lib/content/site";
 import { cn } from "@/lib/utils";
@@ -43,12 +43,6 @@ export function SiteFooter() {
     { label: "Published Books", href: "/published-books" },
     { label: "Blog", href: "/blog" },
   ];
-  const socialLinks = [
-    { label: "Instagram", icon: Instagram },
-    { label: "LinkedIn", icon: Linkedin },
-    { label: "YouTube", icon: Youtube },
-  ];
-
   return (
     <footer className="bg-black px-4 py-14 text-cream sm:px-6 lg:px-8">
       <div className="mx-auto grid max-w-7xl gap-10 border-t border-gold/15 pt-10 lg:grid-cols-[0.9fr_1.1fr]">
@@ -107,22 +101,6 @@ export function SiteFooter() {
               </button>
             </form>
           </div>
-
-          <div className="rounded-lg border border-gold/18 bg-charcoal p-5 shadow-luxury">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">Social</h3>
-            <div className="mt-5 flex gap-3">
-              {socialLinks.map((item) => (
-                <Link
-                  key={item.label}
-                  href="#"
-                  aria-label={item.label}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-gold/24 bg-black/40 text-gold transition hover:border-gold/55 hover:bg-gold/10"
-                >
-                  <item.icon className="h-4 w-4" />
-                </Link>
-              ))}
-            </div>
-          </div>
         </div>
         <div className="lg:col-span-2 border-t border-gold/12 pt-6 text-sm text-cream/46">
           <p>Copyright 2026 {brand.name}. All rights reserved.</p>
@@ -155,11 +133,81 @@ export function PublicEmailLinks({
   );
 }
 
+
+export function SocialFollowSection() {
+  const socialLinks = [
+    {
+      label: "Instagram",
+      href: "https://www.instagram.com/thinkwritemediapublishing?igsh=NzBuZmF3c2Y5dWo3&utm_source=qr",
+      icon: Instagram,
+      active: true,
+    },
+    {
+      label: "Facebook",
+      href: "https://www.facebook.com/thinkandwrite.in/",
+      icon: Facebook,
+      active: true,
+    },
+    { label: "LinkedIn", href: "#", icon: Linkedin, active: false },
+    { label: "YouTube", href: "#", icon: Youtube, active: false },
+  ];
+
+  return (
+    <section className="bg-obsidian px-4 py-16 text-cream sm:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 rounded-lg border border-gold/18 bg-black/50 p-6 shadow-luxury sm:p-8 lg:flex-row lg:items-center">
+        <div className="max-w-2xl">
+          <SectionLabel>Follow Think & Write</SectionLabel>
+          <p className="text-lg leading-8 text-cream/68">
+            Stay connected for publishing updates, author stories, book launches, and writing insights.
+          </p>
+        </div>
+
+        <div className="flex flex-wrap gap-3">
+          {socialLinks.map((item) => {
+            const Icon = item.icon;
+
+            if (!item.active) {
+              return (
+                <span
+                  key={item.label}
+                  title={`${item.label} coming soon`}
+                  aria-label={`${item.label} coming soon`}
+                  className="inline-flex min-h-12 cursor-not-allowed items-center justify-center gap-2 rounded-lg border border-gold/18 bg-black/35 px-5 py-3 text-sm font-semibold text-cream/42 shadow-luxury"
+                >
+                  <Icon className="h-4 w-4 text-gold/55" />
+                  {item.label}
+                  <span className="text-xs font-medium text-cream/36">Coming Soon</span>
+                </span>
+              );
+            }
+
+            return (
+              <a
+                key={item.label}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Follow Think & Write on ${item.label}`}
+                className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-gold/28 bg-gold px-5 py-3 text-sm font-semibold text-black shadow-gold transition-all hover:-translate-y-0.5 hover:bg-gold-light focus:outline-none focus:ring-2 focus:ring-gold"
+              >
+                <Icon className="h-4 w-4" />
+                {item.label}
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function PageShell({ children }: { children: React.ReactNode }) {
   return (
     <main className="min-h-screen bg-black text-cream">
       <SiteHeader />
       {children}
+      <SocialFollowSection />
       <SiteFooter />
     </main>
   );
